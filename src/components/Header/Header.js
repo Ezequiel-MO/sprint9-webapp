@@ -13,7 +13,7 @@ const Header = () => {
         <Link to='/'>
           <img src={logo} alt='company-logo' />
         </Link>
-        <button large>
+        <button>
           active code
           <span>
             <Icon icon='mdi:chevron-down' color='#ea5933' width='24' />
