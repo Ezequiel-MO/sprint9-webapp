@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mui/icons-material": "^5.1.0",
+    "@mui/material": "^5.1.0",
+    "@mui/styled-engine-sc": "npm:@mui/styled-engine-sc@latest",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "html-react-parser": "^1.4.0",
     "react": "^17.0.2",
     "react-bnb-gallery": "^1.4.4",
     "react-dom": "^17.0.2",
@@ -40,5 +44,8 @@
   },
   "devDependencies": {
     "@iconify/react": "^3.0.1"
+  },
+  "resolutions": {
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
   }
 }

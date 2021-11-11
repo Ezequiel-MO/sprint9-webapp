@@ -1,15 +1,13 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/Header/Header";
-import AppBody from "./pages/appBody/AppBody";
 import Welcome from "./pages/welcome/Welcome";
+import Layout from "./pages/layout/Layout";
 
 function App() {
   return (
     <Router>
-      <Header />
       <Routes>
-        <Route path='/app' element={<AppBody />} />
+        <Route path='/app' element={<Layout />} />
         <Route path='/' element={<Welcome />} />
       </Routes>
     </Router>

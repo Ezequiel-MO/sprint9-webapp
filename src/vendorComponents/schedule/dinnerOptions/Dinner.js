@@ -1,4 +1,4 @@
-import RenderPhotos from "../../utilComponents/RenderPhotos";
+import RenderPhotos from "../../utilComponents/renderPhotos/RenderPhotos";
 
 const Dinner = ({ dinnerOption }) => {
   return (

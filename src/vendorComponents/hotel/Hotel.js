@@ -1,5 +1,6 @@
 import { HotelContainer, HotelTitle } from "./styles";
-import RenderPhotos from "../utilComponents/RenderPhotos";
+import RenderPhotos from "../utilComponents/renderPhotos/RenderPhotos";
+import Paragraph from "../utilComponents/paragraph/Paragraph";
 
 const Hotel = ({ hotel }) => {
   return (
@@ -9,7 +10,7 @@ const Hotel = ({ hotel }) => {
         <p> {hotel.numberStars} stars</p>
       </HotelTitle>
       {/*render the hotel's textContent property*/}
-      <p>{hotel.textContent}</p>
+      <Paragraph textContent={hotel.textContent} />
       {/*render the hotel's images property*/}
       <RenderPhotos images={hotel.imageContentUrl} />
     </HotelContainer>
