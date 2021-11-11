@@ -1,10 +1,7 @@
 import { HotelContainer, HotelTitle } from "./styles";
-import ReactBnbGallery from "react-bnb-gallery";
-import "react-bnb-gallery/dist/style.css";
-import { useState } from "react";
+import RenderPhotos from "../utilComponents/RenderPhotos";
 
 const Hotel = ({ hotel }) => {
-  const [isOpen, setIsOpen] = useState(false);
   return (
     <HotelContainer>
       <HotelTitle>
@@ -14,12 +11,7 @@ const Hotel = ({ hotel }) => {
       {/*render the hotel's textContent property*/}
       <p>{hotel.textContent}</p>
       {/*render the hotel's images property*/}
-      <button onClick={() => setIsOpen(true)}>Open gallery</button>
-      <ReactBnbGallery
-        show={isOpen}
-        photos={hotel.imageContentUrl}
-        onClose={() => setIsOpen(false)}
-      />
+      <RenderPhotos images={hotel.imageContentUrl} />
     </HotelContainer>
   );
 };
