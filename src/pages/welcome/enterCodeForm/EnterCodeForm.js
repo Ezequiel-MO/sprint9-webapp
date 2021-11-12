@@ -1,17 +1,26 @@
 import { useState } from "react";
+import { TextInput, Form } from "../styles";
+import { Icon } from "@iconify/react";
 
 const EnterCodeForm = ({ handleSubmit }) => {
   const [userCode, setUserCode] = useState("");
 
   return (
-    <form onSubmit={(e) => handleSubmit(e, userCode)}>
-      <input
+    <Form onSubmit={(e) => handleSubmit(e, userCode)}>
+      <TextInput
         type='text'
         value={userCode}
         onChange={(e) => setUserCode(e.target.value)}
+        placeholder='Enter your code'
       />
-      <input type='submit' value='Submit your code' />
-    </form>
+      <Icon
+        icon='bi:x'
+        width='30'
+        height='30'
+        onClick={() => setUserCode("")}
+      />
+      <input type='submit' />
+    </Form>
   );
 };
 

@@ -3,6 +3,7 @@ import EnterCodeForm from "./enterCodeForm/EnterCodeForm";
 import { findCodeThatMatches } from "./utils";
 import { useNavigate } from "react-router-dom";
 import useGetProjects from "../../hooks/useGetProjects";
+import { WelcomeContainer } from "./styles";
 
 const Welcome = () => {
   //initialize useNavigate hook
@@ -32,7 +33,13 @@ const Welcome = () => {
     //if the code match is not empty, redirect to the welcome page
   };
 
-  return <EnterCodeForm handleSubmit={compareCodes} />;
+  return (
+    <WelcomeContainer>
+      <h3>Welcome to your Quotation </h3>
+      <h5>Enter the code that was provided in your email</h5>
+      <EnterCodeForm handleSubmit={compareCodes} />
+    </WelcomeContainer>
+  );
 };
 
 export default Welcome;
