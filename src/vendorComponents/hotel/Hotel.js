@@ -1,12 +1,24 @@
 import { HotelContainer, HotelTitle } from "./styles";
-import RenderPhotos from "../utilComponents/renderPhotos/RenderPhotos";
+import Gallery from "react-grid-gallery";
 import Paragraph from "../utilComponents/paragraph/Paragraph";
 import { Rating } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Hotel = ({ hotel }) => {
   const [stars] = useState(hotel.numberStars);
+  const [images, setImages] = useState([]);
 
+  useEffect(() => {
+    const imageArr = hotel.imageContentUrl.map((hotel) => {
+      return {
+        src: hotel,
+        thumbnail: hotel,
+        thumbnailWidth: 320,
+        thumbnailHeight: 174,
+      };
+    });
+    setImages(imageArr);
+  }, [hotel.imageContentUrl]);
   return (
     <HotelContainer>
       <HotelTitle>
@@ -16,7 +28,7 @@ const Hotel = ({ hotel }) => {
       {/*render the hotel's textContent property*/}
       <Paragraph textContent={hotel.textContent} />
       {/*render the hotel's images property*/}
-      <RenderPhotos images={hotel.imageContentUrl} />
+      <Gallery images={images} />
     </HotelContainer>
   );
 };
