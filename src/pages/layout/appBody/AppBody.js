@@ -14,7 +14,11 @@ const AppBody = () => {
 
   return (
     <ScAppBodyRoot elevation={2}>
-      <div>{codeMatch && <VendorOptionsTab hotels={codeMatch.hotels} />}</div>
+      <div>
+        {codeMatch && (
+          <VendorOptionsTab tabList={codeMatch.hotels} category='hotels' />
+        )}
+      </div>
       <div>
         {
           //if codeMatch is not null, then map the schedule array property of codeMatch and render the Day component

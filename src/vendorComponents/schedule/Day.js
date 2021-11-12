@@ -1,34 +1,34 @@
 import Event from "./events/Event";
 import Lunch from "./lunchOptions/Lunch";
 import Dinner from "./dinnerOptions/Dinner";
+import VendorOptionsTab from "../utilComponents/tabs/VendorOptionsTab";
 
 const Day = ({ day }) => {
   return (
     <div>
-      <h4>{day.date}</h4>
+      <h2>{day.date}</h2>
+      {day.events.length > 1 ? (
+        <VendorOptionsTab tabList={day.events} category='events' />
+      ) : (
+        day.events?.map((event) => <Event key={event._id} event={event} />)
+      )}
       <div>
-        {
-          //Render the Events if any
-          day.events?.map((event) => (
-            <Event key={event._id} event={event} />
-          ))
-        }
-      </div>
-      <div>
-        {
-          //Render the Lunch Options if any
+        {day.lunch.length > 1 ? (
+          <VendorOptionsTab tabList={day.lunch} category='lunch' />
+        ) : (
           day.lunch?.map((lunchOption) => (
             <Lunch key={lunchOption._id} lunchOption={lunchOption} />
           ))
-        }
+        )}
       </div>
       <div>
-        {
-          //Render the Dinner Options if any
+        {day.dinner.length > 1 ? (
+          <VendorOptionsTab tabList={day.dinner} category='dinner' />
+        ) : (
           day.dinner?.map((dinnerOption) => (
             <Dinner key={dinnerOption._id} dinnerOption={dinnerOption} />
           ))
-        }
+        )}
       </div>
     </div>
   );

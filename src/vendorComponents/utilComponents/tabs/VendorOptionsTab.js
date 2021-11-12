@@ -1,8 +1,8 @@
 import { Box, AppBar, Tabs, Tab } from "@mui/material";
 import { useState } from "react";
-import Hotel from "../../hotel/Hotel";
+import { renderTab } from "./logic";
 
-const VendorOptionsTab = ({ hotels }) => {
+const VendorOptionsTab = ({ tabList, category }) => {
   const [tabValue, setTabValue] = useState(0);
 
   const handleChange = (ev, newValue) => {
@@ -19,15 +19,13 @@ const VendorOptionsTab = ({ hotels }) => {
           indicatorColor='secondary'
           textColor='inherit'
         >
-          {hotels.map((hotel, index) => (
-            <Tab key={hotel._id} label={hotel.name} />
+          {tabList.map((item) => (
+            <Tab key={item._id} label={item.name} />
           ))}
         </Tabs>
       </AppBar>
-      {hotels.map((hotel, index) => {
-        if (index === tabValue) {
-          return <Hotel hotel={hotel} key={hotel._id} />;
-        }
+      {tabList.map((item, index) => {
+        return renderTab(item, index, tabValue, category);
       })}
     </Box>
   );
