@@ -1,15 +1,15 @@
 import Header from "./Header/Header";
 import AppBody from "./appBody/AppBody";
-import { ScLayoutRoot } from "./styles";
+import { ScAppBodyContainer } from "./styles";
 
 const Layout = () => {
   return (
-    <ScLayoutRoot>
+    <div>
       <Header />
-      <main>
+      <ScAppBodyContainer>
         <AppBody />
-      </main>
-    </ScLayoutRoot>
+      </ScAppBodyContainer>
+    </div>
   );
 };
 

@@ -8,7 +8,7 @@ const RenderPhotos = ({ images }) => {
   return (
     <>
       <MainImage onClick={() => setIsOpen(true)}>
-        <img src={images[0]} alt='first image' />
+        <img src={images[0]} alt='first' />
         <h5>Click on the image and watch the gallery</h5>
       </MainImage>
       <ReactBnbGallery

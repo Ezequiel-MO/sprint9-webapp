@@ -1,14 +1,17 @@
-import * as React from "react";
 import { Paper } from "@mui/material";
 import styled from "styled-components";
 
+export const ScAppBodyContainer = styled.div`
+  display: flex;
+`;
+
 export const ScAppBodyRoot = styled(Paper)`
-  padding: 1rem;
-  margin: auto;
+  padding: 2rem;
+  margin: 2rem auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
+  width: 60rem;
 `;
 
 export const ScLayoutRoot = styled.div`
