@@ -4,9 +4,9 @@ import logo from "../../../assets/logo.svg";
 import { Link } from "react-router-dom";
 import { IconButton } from "@mui/material";
 import { useState } from "react";
-import SidebarMenu from "../sidebarMenu/SidebarMenu";
+import SidebarMenu from "./sidebarMenu/SidebarMenu";
 
-const Header = () => {
+const Header = ({ codeMatch }) => {
   const [open, setOpen] = useState(false);
 
   const toggleDrawer = (open) => (event) => {
@@ -25,7 +25,12 @@ const Header = () => {
         <IconButton onClick={toggleDrawer(true)}>
           <Icon icon='bytesize:menu' color='#ea5933' width='30' />
         </IconButton>
-        <SidebarMenu anchor='left' toggleDrawer={toggleDrawer} open={open} />
+        <SidebarMenu
+          anchor='left'
+          toggleDrawer={toggleDrawer}
+          open={open}
+          codeMatch={codeMatch}
+        />
         <Link to='/'>
           <img src={logo} alt='company-logo' />
         </Link>

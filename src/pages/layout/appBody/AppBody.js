@@ -1,15 +1,8 @@
-import { useLocation } from "react-router";
 import Day from "../../../vendorComponents/schedule/Day";
 import { ScAppBodyRoot } from "../styles";
-
 import VendorOptionsTab from "../../../vendorComponents/utilComponents/tabs/VendorOptionsTab";
 
-const AppBody = () => {
-  //retrieve codeMatch from navigate() with useLocation()
-  const {
-    state: { codeMatch },
-  } = useLocation();
-
+const AppBody = ({ codeMatch }) => {
   console.log("code match in app body=>", codeMatch);
 
   return (
