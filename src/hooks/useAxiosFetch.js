@@ -17,7 +17,7 @@ export const useAxiosFetch = (dataURL) => {
           cancelToken: source.token,
           headers: {
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTdkMjgxMTY5NTA2ZjhkOTkzNDg0YzMiLCJpYXQiOjE2MzY3MTA1NDUsImV4cCI6MTYzNjc5Njk0NX0.BCv4-hFhC8Ldzg9IhzXFuStT7tJ8db8NW0H7g0WjpYc",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTdkMjgxMTY5NTA2ZjhkOTkzNDg0YzMiLCJpYXQiOjE2MzY5NjQwNzMsImV4cCI6MTYzNzA1MDQ3M30.YZcR3-lHMITwmrAFWCEVrMRjSmVDTvLT6yRHnKObXtA",
           },
         });
         if (isMounted) {

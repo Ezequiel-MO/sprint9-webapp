@@ -9,3 +9,8 @@ export const HotelTitle = styled.div`
   display: flex;
   align-items: center;
 `;
+
+export const HotelIconsRoot = styled.div`
+  display: flex;
+  justify-content: flex-start;
+`;
