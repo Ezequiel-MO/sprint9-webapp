@@ -1,8 +1,9 @@
 import { HotelContainer, HotelTitle } from "./styles";
-import Gallery from "react-grid-gallery";
+import Gallery from "react-photo-gallery";
+import Carousel, { Modal, ModalGateway } from "react-images";
 import Paragraph from "../utilComponents/paragraph/Paragraph";
 import { Rating } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import HotelIcons from "./hotelIcons/HotelIcons";
 
 const Hotel = ({ hotel }) => {
@@ -10,14 +11,15 @@ const Hotel = ({ hotel }) => {
   const [images, setImages] = useState([]);
   const [leftIconsText, setLeftIconsText] = useState([]);
   const [rightIconsText, setRightIconsText] = useState([]);
+  const [currentImage, setCurrentImage] = useState(0);
+  const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
   useEffect(() => {
     const imageArr = hotel.imageContentUrl.map((hotel) => {
       return {
         src: hotel,
-        thumbnail: hotel,
-        thumbnailWidth: 320,
-        thumbnailHeight: 174,
+        width: 4,
+        height: 3,
       };
     });
     setImages(imageArr);
@@ -48,6 +50,16 @@ const Hotel = ({ hotel }) => {
     setRightIconsText(rightIconsTextArr);
   }, [hotel]);
 
+  const openLightbox = useCallback((event, { photo, index }) => {
+    setCurrentImage(index);
+    setViewerIsOpen(true);
+  }, []);
+
+  const closeLightbox = () => {
+    setCurrentImage(0);
+    setViewerIsOpen(false);
+  };
+
   return (
     <HotelContainer>
       <HotelTitle>
@@ -57,7 +69,21 @@ const Hotel = ({ hotel }) => {
       {/*render the hotel's textContent property*/}
       <Paragraph textContent={hotel.textContent} />
       {/*render the hotel's images property*/}
-      <Gallery images={images} />
+      <Gallery photos={images} onClick={openLightbox} />
+      <ModalGateway>
+        {viewerIsOpen ? (
+          <Modal onClose={closeLightbox}>
+            <Carousel
+              currentIndex={currentImage}
+              views={images.map((x) => ({
+                ...x,
+                srcset: x.srcSet,
+                caption: x.title,
+              }))}
+            />
+          </Modal>
+        ) : null}
+      </ModalGateway>
       <HotelIcons
         leftIconsText={leftIconsText}
         rightIconsText={rightIconsText}
