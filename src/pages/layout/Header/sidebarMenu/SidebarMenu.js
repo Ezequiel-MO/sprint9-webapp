@@ -1,90 +1,91 @@
-import {
-  Drawer,
-  Box,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Divider,
-} from "@mui/material";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import { Drawer, Box, Divider } from "@mui/material";
+import { TreeView, TreeItem } from "@mui/lab";
+import { Icon } from "@iconify/react";
+
 import { useState, useEffect } from "react";
 
 const SidebarMenu = ({ anchor, toggleDrawer, open, codeMatch }) => {
-  const [sidebarArray, setSidebarArray] = useState([]);
+  const [sidebarObj, setSidebarObj] = useState({});
+
   useEffect(() => {
-    //create sidebarArray by mapping the codeMatch.schedule array
-    setSidebarArray(
-      codeMatch.schedule.map((item) => {
+    const sidebarContent = {
+      id: "root",
+      name: "Day Program",
+      children: codeMatch.schedule.map((item) => {
         return {
           id: item._id,
-          title: item.date,
-          events: item.events.map((event) => event.title),
-          lunch: item.lunch.map((lunchItem) => lunchItem.name),
-          dinner: item.dinner.map((dinnerItem) => dinnerItem.name),
+          name: item.date,
+          children: [
+            {
+              id: "events-id",
+              name: "events",
+              children: item.events.map((event, index) => {
+                return {
+                  id: `${event._id}-${index}`,
+                  name: event.name,
+                };
+              }),
+            },
+            {
+              id: "lunch-id",
+              name: "lunch",
+              children: item.lunch.map((lunch, index) => {
+                return {
+                  id: `${lunch._id}-${index}`,
+                  name: lunch.name,
+                };
+              }),
+            },
+            {
+              id: "dinner-id",
+              name: "dinner",
+              children: item.dinner.map((dinner, index) => {
+                return {
+                  id: `${dinner._id}-${index}`,
+                  name: dinner.name,
+                };
+              }),
+            },
+          ],
         };
-      })
-    );
+      }),
+    };
+    setSidebarObj(sidebarContent);
   }, [codeMatch]);
 
-  const list = (anchor) => (
-    <Box
-      sx={{ width: 500 }}
-      role='presentation'
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
-    >
-      <List>
-        {sidebarArray.map((item) => (
-          <ListItem button key={item.id}>
-            <ListItemText primary={item.title} />
-            {
-              <List>
-                <ListItem>
-                  <ListItemText primary={item.events} />
-                </ListItem>
-                <ListItem>
-                  <ListItemText primary={item.lunch} />
-                </ListItem>
-                <ListItem>
-                  <ListItemText primary={item.dinner} />
-                </ListItem>
-              </List>
-            }
+  useEffect(() => {
+    console.log("sidebar object=>", sidebarObj);
+  }, [sidebarObj]);
 
-            <Divider />
-          </ListItem>
-        ))}
-      </List>
-    </Box>
+  const renderTree = (nodes) => (
+    <TreeItem key={nodes.id} nodeId={nodes.id} label={nodes.name}>
+      {Array.isArray(nodes.children)
+        ? nodes.children.map((node) => renderTree(node))
+        : null}
+    </TreeItem>
   );
-
-  /*  <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List> */
 
   return (
     <Drawer anchor={anchor} open={open} onClose={toggleDrawer(false)}>
-      {list("left")}
+      <TreeView
+        defaultExpanded={["root"]}
+        defaultCollapseIcon={
+          <Icon icon='eva:collapse-fill' color='#ea5933' width='50' />
+        }
+        defaultExpandIcon={
+          <Icon icon='ic:baseline-expand-more' color='#ea5933' width='50' />
+        }
+        sx={{
+          height: 110,
+          flexGrow: 1,
+          maxWidth: 500,
+          overflowY: "auto",
+          padding: "1rem",
+          marginTop: "5rem",
+        }}
+      >
+        {renderTree(sidebarObj)}
+      </TreeView>
     </Drawer>
   );
 };

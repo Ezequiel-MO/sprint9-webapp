@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@mui/icons-material": "^5.1.0",
+    "@mui/lab": "^5.0.0-alpha.54",
     "@mui/material": "^5.1.0",
     "@mui/styled-engine-sc": "npm:@mui/styled-engine-sc@latest",
     "@testing-library/jest-dom": "^5.11.4",
