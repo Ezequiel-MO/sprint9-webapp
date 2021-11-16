@@ -17,6 +17,21 @@ const theme = createTheme({
       contrastText: "#fff",
     },
   },
+  overrides: {
+    MuiTreeItem: {
+      iconContainer: {
+        color: "#ea5933",
+      },
+      label: {
+        color: "#ea5933",
+        fontSize: 18,
+        "&&:hover": {
+          backgroundColor: "#DDBCB0",
+          color: "#22281b",
+        },
+      },
+    },
+  },
 });
 
 ReactDOM.render(

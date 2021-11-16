@@ -2,7 +2,7 @@ import { Paper } from "@mui/material";
 import styled from "styled-components";
 
 export const ScAppBodyContainer = styled.div`
-  display: flex;
+  border: 1px solid red;
 `;
 
 export const ScAppBodyRoot = styled(Paper)`

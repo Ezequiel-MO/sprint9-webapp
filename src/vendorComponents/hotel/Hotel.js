@@ -63,7 +63,7 @@ const Hotel = ({ hotel }) => {
   return (
     <HotelContainer>
       <HotelTitle>
-        <h4> {hotel.name}</h4>
+        <h2> {hotel.name}</h2>
         <Rating readOnly value={stars} />
       </HotelTitle>
       {/*render the hotel's textContent property*/}

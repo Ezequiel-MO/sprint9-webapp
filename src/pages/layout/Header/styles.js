@@ -1,28 +1,21 @@
+import { AppBar, Toolbar } from "@mui/material";
 import styled from "styled-components";
 
-export const HeaderContainer = styled.div`
+export const ScAppBar = styled(AppBar)`
+  height: 5rem;
+`;
+
+export const ScToolbar = styled(Toolbar)`
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #000;
-  padding: 1rem;
 `;
 
 export const HeaderLeft = styled.div`
+  flex: 0.3;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-  flex: 1;
-  & img {
-    width: 8rem;
-    margin: 0 1rem;
-  }
-  & button {
-    border: none;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+  & a img {
+    width: 9rem;
   }
 `;
-
-export const HeaderRight = styled.div``;

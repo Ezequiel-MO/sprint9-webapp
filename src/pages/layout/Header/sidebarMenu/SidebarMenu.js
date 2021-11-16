@@ -1,20 +1,10 @@
-import { Drawer, Box, Divider } from "@mui/material";
 import { TreeView, TreeItem } from "@mui/lab";
 import { Icon } from "@iconify/react";
-import * as Scroll from "react-scroll";
-import {
-  Link,
-  Button,
-  Element,
-  Events,
-  animateScroll as scroll,
-  scrollSpy,
-  scroller,
-} from "react-scroll";
+import { Link, animateScroll as scroll } from "react-scroll";
 
 import { useState, useEffect } from "react";
 
-const SidebarMenu = ({ anchor, toggleDrawer, open, codeMatch }) => {
+const SidebarMenu = ({ codeMatch }) => {
   const [sidebarObj, setSidebarObj] = useState({});
 
   useEffect(() => {
@@ -107,27 +97,25 @@ const SidebarMenu = ({ anchor, toggleDrawer, open, codeMatch }) => {
   };
 
   return (
-    <Drawer anchor={anchor} open={open} onClose={toggleDrawer(false)}>
-      <TreeView
-        defaultExpanded={["root"]}
-        defaultCollapseIcon={
-          <Icon icon='eva:collapse-fill' color='#ea5933' width='75' />
-        }
-        defaultExpandIcon={
-          <Icon icon='ic:baseline-expand-more' color='#ea5933' width='75' />
-        }
-        sx={{
-          height: 90,
-          flexGrow: 1,
-          maxWidth: 500,
-          overflowY: "auto",
-          padding: "1.5rem",
-          marginTop: "5rem",
-        }}
-      >
-        {sidebarObj && renderTree(sidebarObj)}
-      </TreeView>
-    </Drawer>
+    <TreeView
+      defaultExpanded={["root"]}
+      defaultCollapseIcon={
+        <Icon icon='eva:collapse-fill' color='#ea5933' width='75' />
+      }
+      defaultExpandIcon={
+        <Icon icon='ic:baseline-expand-more' color='#ea5933' width='75' />
+      }
+      sx={{
+        height: 40,
+        flexGrow: 1,
+        maxWidth: 500,
+        overflowY: "auto",
+        padding: "1rem",
+        marginTop: "5rem",
+      }}
+    >
+      {sidebarObj && renderTree(sidebarObj)}
+    </TreeView>
   );
 };
 

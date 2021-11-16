@@ -1,6 +1,7 @@
 import Day from "../../../vendorComponents/schedule/Day";
 import { ScAppBodyRoot } from "../styles";
 import VendorOptionsTab from "../../../vendorComponents/utilComponents/tabs/VendorOptionsTab";
+import Hotel from "../../../vendorComponents/hotel/Hotel";
 
 const AppBody = ({ codeMatch }) => {
   console.log("code match in app body=>", codeMatch);
@@ -8,7 +9,9 @@ const AppBody = ({ codeMatch }) => {
   return (
     <ScAppBodyRoot elevation={2}>
       <div>
-        {codeMatch && (
+        {codeMatch && codeMatch.hotels.length === 1 ? (
+          <Hotel hotel={codeMatch.hotels[0]} />
+        ) : (
           <VendorOptionsTab tabList={codeMatch.hotels} category='hotels' />
         )}
       </div>
