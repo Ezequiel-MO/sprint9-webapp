@@ -11,14 +11,15 @@ const SidebarMenu = ({ anchor, toggleDrawer, open, codeMatch }) => {
     const sidebarContent = {
       id: "root",
       name: "Day Program",
-      children: codeMatch.schedule.map((item) => {
+      children: codeMatch.schedule.map((item, index) => {
         return {
           id: item._id,
           name: item.date,
           children: [
             {
-              id: "events-id",
+              id: `events-id-${index}`,
               name: "events",
+              icon: <Icon icon='ic:twotone-emoji-events' color='#ea5933' />,
               children: item.events.map((event, index) => {
                 return {
                   id: `${event._id}-${index}`,
@@ -27,8 +28,9 @@ const SidebarMenu = ({ anchor, toggleDrawer, open, codeMatch }) => {
               }),
             },
             {
-              id: "lunch-id",
+              id: `lunch-id-${index}`,
               name: "lunch",
+              icon: <Icon icon='emojione:shallow-pan-of-food' />,
               children: item.lunch.map((lunch, index) => {
                 return {
                   id: `${lunch._id}-${index}`,
@@ -37,8 +39,9 @@ const SidebarMenu = ({ anchor, toggleDrawer, open, codeMatch }) => {
               }),
             },
             {
-              id: "dinner-id",
+              id: `dinner-id-${index}`,
               name: "dinner",
+              icon: <Icon icon='cil:dinner' color='#ea5933' />,
               children: item.dinner.map((dinner, index) => {
                 return {
                   id: `${dinner._id}-${index}`,
@@ -58,7 +61,12 @@ const SidebarMenu = ({ anchor, toggleDrawer, open, codeMatch }) => {
   }, [sidebarObj]);
 
   const renderTree = (nodes) => (
-    <TreeItem key={nodes.id} nodeId={nodes.id} label={nodes.name}>
+    <TreeItem
+      key={nodes.id}
+      nodeId={nodes.id}
+      label={nodes.name}
+      icon={nodes.icon}
+    >
       {Array.isArray(nodes.children)
         ? nodes.children.map((node) => renderTree(node))
         : null}
@@ -70,17 +78,17 @@ const SidebarMenu = ({ anchor, toggleDrawer, open, codeMatch }) => {
       <TreeView
         defaultExpanded={["root"]}
         defaultCollapseIcon={
-          <Icon icon='eva:collapse-fill' color='#ea5933' width='50' />
+          <Icon icon='eva:collapse-fill' color='#ea5933' width='75' />
         }
         defaultExpandIcon={
-          <Icon icon='ic:baseline-expand-more' color='#ea5933' width='50' />
+          <Icon icon='ic:baseline-expand-more' color='#ea5933' width='75' />
         }
         sx={{
-          height: 110,
+          height: 90,
           flexGrow: 1,
           maxWidth: 500,
           overflowY: "auto",
-          padding: "1rem",
+          padding: "1.5rem",
           marginTop: "5rem",
         }}
       >
