@@ -2,7 +2,7 @@ import RenderPhotos from "../../utilComponents/renderPhotos/RenderPhotos";
 
 const Dinner = ({ dinnerOption }) => {
   return (
-    <div>
+    <div id={dinnerOption._id}>
       <h5>{dinnerOption.name}</h5>
       <p>{dinnerOption.textContent}</p>
       <RenderPhotos images={dinnerOption.imageContentUrl} />
