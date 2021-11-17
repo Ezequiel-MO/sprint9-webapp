@@ -1,10 +1,8 @@
 import { Box, AppBar, Tabs, Tab, Typography } from "@mui/material";
-import {
-  selectTabOption,
-  SET_TABOPTION,
-} from "../../../features/TabOptionSlice";
+import { selectTabOption } from "../../../features/TabOptionSlice";
 import { renderTab } from "./logic";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -14,11 +12,10 @@ function TabPanel(props) {
       role='tabpanel'
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box p={3}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -27,21 +24,25 @@ function TabPanel(props) {
 }
 
 const VendorOptionsTab = ({ tabList, category }) => {
-  const dispatch = useDispatch();
-  const tabValue = useSelector(selectTabOption);
+  const [value, setValue] = useState(0);
+  const tabOption = useSelector(selectTabOption);
+
+  useEffect(() => {
+    setValue(tabOption);
+  }, [tabOption]);
 
   console.log("tabList=> ", tabList);
 
   const handleChange = (ev, newValue) => {
     console.log("new value=>", newValue);
-    dispatch(SET_TABOPTION(newValue));
+    setValue(newValue);
   };
 
   return (
     <Box>
       <AppBar position='static'>
         <Tabs
-          value={tabValue}
+          value={value}
           onChange={handleChange}
           variant='fullWidth'
           indicatorColor='secondary'
@@ -52,13 +53,11 @@ const VendorOptionsTab = ({ tabList, category }) => {
           ))}
         </Tabs>
       </AppBar>
-      {tabList.map((item, index) => {
-        return (
-          <TabPanel key={item._id} value={tabValue} index={index}>
-            {renderTab(item, category)}
-          </TabPanel>
-        );
-      })}
+      {tabList.map((item, index) => (
+        <TabPanel value={value} index={index} key={item._id}>
+          {renderTab(item, index, value, category)}
+        </TabPanel>
+      ))}
     </Box>
   );
 };
