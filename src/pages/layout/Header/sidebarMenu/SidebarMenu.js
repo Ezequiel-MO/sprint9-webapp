@@ -1,12 +1,13 @@
 import { TreeView, TreeItem } from "@mui/lab";
 import { Icon } from "@iconify/react";
 import { Link, animateScroll as scroll } from "react-scroll";
-
+import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
+import { SET_TABOPTION } from "../../../../features/TabOptionSlice";
 
 const SidebarMenu = ({ codeMatch }) => {
   const [sidebarObj, setSidebarObj] = useState({});
-
+  const dispatch = useDispatch();
   useEffect(() => {
     const sidebarContent = {
       id: "root",
@@ -15,6 +16,7 @@ const SidebarMenu = ({ codeMatch }) => {
         return {
           id: item._id,
           name: item.date,
+          icon: <Icon icon='akar-icons:calendar' color='#ea5933' width='50' />,
           children: [
             {
               id: `events-id-${index}`,
@@ -62,7 +64,12 @@ const SidebarMenu = ({ codeMatch }) => {
       <TreeItem nodeId={nodes.id} label={nodes.name}>
         {nodes.children &&
           nodes.children.map((node) => (
-            <TreeItem nodeId={node.id} label={node.name} key={node.id}>
+            <TreeItem
+              nodeId={node.id}
+              label={node.name}
+              key={node.id}
+              icon={node.icon}
+            >
               {node.children &&
                 node.children.map((child) => (
                   <TreeItem
@@ -72,7 +79,7 @@ const SidebarMenu = ({ codeMatch }) => {
                     icon={child.icon}
                   >
                     {child.children &&
-                      child.children.map((grandChild) => (
+                      child.children.map((grandChild, index) => (
                         <Link
                           key={grandChild.id}
                           to={grandChild.id}
@@ -85,6 +92,7 @@ const SidebarMenu = ({ codeMatch }) => {
                           <TreeItem
                             nodeId={grandChild.id}
                             label={grandChild.name}
+                            onClick={(e) => dispatch(SET_TABOPTION(index))}
                           />
                         </Link>
                       ))}

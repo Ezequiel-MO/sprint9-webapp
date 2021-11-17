@@ -7,7 +7,7 @@ export const ScAppBodyContainer = styled.div`
 
 export const ScAppBodyRoot = styled(Paper)`
   padding: 2rem;
-  margin: 2rem auto;
+  margin: 5rem auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
