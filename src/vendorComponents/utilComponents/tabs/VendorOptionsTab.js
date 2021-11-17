@@ -1,5 +1,8 @@
 import { Box, AppBar, Tabs, Tab } from "@mui/material";
-import { selectTabOption } from "../../../features/TabOptionSlice";
+import {
+  selectTabOption,
+  SET_TABOPTION,
+} from "../../../features/TabOptionSlice";
 import { renderTab } from "./logic";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -8,7 +11,7 @@ const VendorOptionsTab = ({ tabList, category }) => {
   const tabValue = useSelector(selectTabOption);
 
   const handleChange = (ev, newValue) => {
-    dispatch(selectTabOption(newValue));
+    dispatch(SET_TABOPTION(newValue));
   };
 
   return (
