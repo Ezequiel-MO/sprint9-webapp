@@ -9,10 +9,10 @@ const AppBody = ({ codeMatch }) => {
   return (
     <ScAppBodyRoot elevation={2}>
       <div>
-        {codeMatch && codeMatch.hotels.length === 1 ? (
-          <Hotel hotel={codeMatch.hotels[0]} />
-        ) : (
+        {codeMatch && codeMatch.hotels.length > 1 ? (
           <VendorOptionsTab tabList={codeMatch.hotels} category='hotels' />
+        ) : (
+          <Hotel hotel={codeMatch.hotels[0]} />
         )}
       </div>
       <div>

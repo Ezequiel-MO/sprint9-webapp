@@ -1,9 +1,7 @@
 import { AppBar, Toolbar } from "@mui/material";
 import styled from "styled-components";
 
-export const ScAppBar = styled(AppBar)`
-  height: 5rem;
-`;
+export const ScAppBar = styled(AppBar)``;
 
 export const ScToolbar = styled(Toolbar)`
   display: flex;
@@ -19,10 +17,14 @@ export const HeaderLeft = styled.div`
     width: 9rem;
   }
   & button {
-    margin-left: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-width: 12rem;
+    margin: 0.5rem;
   }
+`;
+
+export const ScButton = styled.button`
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 12rem;
 `;

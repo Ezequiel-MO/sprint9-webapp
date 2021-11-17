@@ -26,6 +26,13 @@ const Hotel = ({ hotel }) => {
   }, [hotel.imageContentUrl]);
 
   useEffect(() => {
+    console.log("text content type of =>", typeof hotel.textContent[0]);
+    //convert hotel.textContent string to array
+    const textContentArr = hotel.textContent[0].split("\n");
+    console.log("text content array=>", textContentArr);
+  }, [hotel.textContent]);
+
+  useEffect(() => {
     //iterate through the hotel object and construct a new object named leftIconsTextObj with the following keys : direction, restaurants, numberRooms, wifiSpeed
     const leftIconsTextObj = {
       direction: hotel.direction,

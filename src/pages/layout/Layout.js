@@ -1,27 +1,10 @@
 import { useState } from "react";
-import {
-  CssBaseline,
-  useScrollTrigger,
-  Slide,
-  Drawer,
-  Hidden,
-} from "@mui/material";
+import { CssBaseline, Drawer, Hidden } from "@mui/material";
 import ScrollToTop from "react-scroll-to-top";
 import Header from "./Header/Header";
 import SidebarMenu from "./Header/sidebarMenu/SidebarMenu";
 import AppBody from "./appBody/AppBody";
 import { useLocation } from "react-router-dom";
-
-function HideOnScroll(props) {
-  const { children, window } = props;
-  const trigger = useScrollTrigger({ target: window ? window() : undefined });
-
-  return (
-    <Slide appear={false} direction='down' in={!trigger}>
-      {children}
-    </Slide>
-  );
-}
 
 const Layout = (props) => {
   const { window } = props;
@@ -42,9 +25,7 @@ const Layout = (props) => {
     <div>
       <ScrollToTop smooth />
       <CssBaseline />
-
       <Header handleDrawerToggle={handleDrawerToggle} />
-
       <nav>
         <Hidden smUp implementation='css'>
           <Drawer
