@@ -2,6 +2,7 @@ import Day from "../../../vendorComponents/schedule/Day";
 import { ScAppBodyRoot } from "../styles";
 import VendorOptionsTab from "../../../vendorComponents/utilComponents/tabs/VendorOptionsTab";
 import Hotel from "../../../vendorComponents/hotel/Hotel";
+import Budget from "./budget/Budget";
 
 const AppBody = ({ codeMatch }) => {
   console.log("code match in app body=>", codeMatch);
@@ -21,6 +22,11 @@ const AppBody = ({ codeMatch }) => {
           codeMatch &&
             codeMatch.schedule?.map((day) => <Day key={day._id} day={day} />)
         }
+      </div>
+      <div>
+        {codeMatch && (
+          <Budget pax={codeMatch.nrPax} schedule={codeMatch?.schedule} />
+        )}
       </div>
     </ScAppBodyRoot>
   );
