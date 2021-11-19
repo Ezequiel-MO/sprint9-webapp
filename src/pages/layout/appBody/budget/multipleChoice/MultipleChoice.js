@@ -1,16 +1,18 @@
-import { FormControl, MenuItem, Select } from "@mui/material";
+import { FormControl, MenuItem, Select, Box, Typography } from "@mui/material";
 
-const MultipleChoice = ({ options }) => {
+const MultipleChoice = ({ options, value, handleChange }) => {
   return (
-    <FormControl fullWidth>
-      <Select value={options[0].name}>
-        {options.map((option) => (
-          <MenuItem key={option._id} value={option.name}>
-            {option.name}
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
+    <Box sx={{ minWidth: 120 }}>
+      <FormControl fullWidth>
+        <Select value={value} onChange={handleChange}>
+          {options.map((option) => (
+            <MenuItem key={option._id} value={option.name}>
+              <Typography variant='body1'>{option.name}</Typography>
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    </Box>
   );
 };
 

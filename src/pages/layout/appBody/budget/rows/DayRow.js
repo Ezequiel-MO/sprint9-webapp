@@ -1,13 +1,11 @@
-import DinnerRows from "./DinnerRows";
-import EventRows from "./EventRows";
-import LunchRows from "./LunchRows";
+import Rows from "./Rows";
 
 const DayRow = ({ day, pax }) => {
   return (
     <>
-      <EventRows pax={pax} date={day.date} events={day.events} />
-      <LunchRows pax={pax} date={day.date} lunchOptions={day.lunch} />
-      <DinnerRows pax={pax} date={day.date} dinnerOptions={day.dinner} />
+      <Rows pax={pax} date={day.date} options={day.events} cat='Event' />
+      <Rows pax={pax} date={day.date} options={day.lunch} cat='Lunch' />
+      <Rows pax={pax} date={day.date} options={day.dinner} cat='Dinner' />
     </>
   );
 };

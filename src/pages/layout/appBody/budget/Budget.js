@@ -12,7 +12,7 @@ const Budget = ({ pax, schedule }) => {
       <TableHead>
         <TableRow>
           <TableCell width='5%' />
-          <TableCell width='20%'>Date</TableCell>
+          <TableCell width='20%'>Event Type</TableCell>
           <TableCell width='35%'>Service</TableCell>
           <TableCell width='5%'>pax</TableCell>
           <TableCell width='15%'>Unit cost w/VAT</TableCell>
