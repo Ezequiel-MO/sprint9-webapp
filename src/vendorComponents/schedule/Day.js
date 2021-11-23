@@ -7,10 +7,15 @@ const Day = ({ day }) => {
   return (
     <div>
       <h2>{day.date}</h2>
-      {day.events.length > 1 ? (
-        <VendorOptionsTab tabList={day.events} category='events' />
+      {day.morningEvents.length > 1 ? (
+        <VendorOptionsTab
+          tabList={day.morningEvents}
+          category='morning-events'
+        />
       ) : (
-        day.events?.map((event) => <Event key={event._id} event={event} />)
+        day.morningEvents?.map((morningEvent) => (
+          <Event key={morningEvent._id} event={morningEvent} />
+        ))
       )}
       <div>
         {day.lunch.length > 1 ? (
@@ -18,6 +23,18 @@ const Day = ({ day }) => {
         ) : (
           day.lunch?.map((lunchOption) => (
             <Lunch key={lunchOption._id} lunchOption={lunchOption} />
+          ))
+        )}
+      </div>
+      <div>
+        {day.afternoonEvents.length > 1 ? (
+          <VendorOptionsTab
+            tabList={day.afternoonEvents}
+            category='afternoon-events'
+          />
+        ) : (
+          day.afternoonEvents?.map((afternoonEvent) => (
+            <Event key={afternoonEvent._id} event={afternoonEvent} />
           ))
         )}
       </div>

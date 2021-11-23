@@ -19,10 +19,10 @@ const SidebarMenu = ({ codeMatch }) => {
           icon: <Icon icon='akar-icons:calendar' color='#ea5933' width='50' />,
           children: [
             {
-              id: `events-id-${index}`,
-              name: "events",
+              id: `morning-events-id-${index}`,
+              name: "morning-events",
               icon: <Icon icon='ic:twotone-emoji-events' color='#ea5933' />,
-              children: item.events.map((event) => {
+              children: item.morningEvents.map((event) => {
                 return {
                   id: event._id,
                   name: event.name,
@@ -37,6 +37,17 @@ const SidebarMenu = ({ codeMatch }) => {
                 return {
                   id: lunch._id,
                   name: lunch.name,
+                };
+              }),
+            },
+            {
+              id: `afternoon-events-id-${index}`,
+              name: "afternoon-events",
+              icon: <Icon icon='ic:twotone-emoji-events' color='#ea5933' />,
+              children: item.afternoonEvents.map((event) => {
+                return {
+                  id: event._id,
+                  name: event.name,
                 };
               }),
             },

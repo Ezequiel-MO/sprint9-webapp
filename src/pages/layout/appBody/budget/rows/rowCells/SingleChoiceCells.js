@@ -6,10 +6,10 @@ import { useDispatch } from "react-redux";
 const SingleChoiceCells = ({ pax, options, cat }) => {
   const dispatch = useDispatch();
   useEffect(() => {
-    //if cat Event is received, then dispatch action to update selectedBudget
-    if (cat === "Event") {
+    //if cat Morning-Event is received, then dispatch action to update selectedBudget
+    if (cat === "Morning-Event") {
       dispatch({
-        type: "selectedBudget/SET_SELECTEDEVENTS",
+        type: "selectedBudget/SET_SELECTEDMORNINGEVENTS",
         payload: options,
       });
     }
@@ -17,6 +17,13 @@ const SingleChoiceCells = ({ pax, options, cat }) => {
     if (cat === "Lunch") {
       dispatch({
         type: "selectedBudget/SET_SELECTEDLUNCHES",
+        payload: options,
+      });
+    }
+    //if cat Afternoon-Event is received, then dispatch action to update selectedBudget
+    if (cat === "Afternoon-Event") {
+      dispatch({
+        type: "selectedBudget/SET_SELECTEDAFTERNOONEVENTS",
         payload: options,
       });
     }

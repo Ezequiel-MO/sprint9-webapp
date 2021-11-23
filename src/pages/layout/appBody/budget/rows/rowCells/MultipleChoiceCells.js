@@ -5,10 +5,10 @@ import useGetSelectedOption from "../../../../../../hooks/useGetSelectedOption";
 import MultipleChoice from "../../multipleChoice/MultipleChoice";
 
 const MultipleChoiceCells = ({ pax, cat, options }) => {
-  const [value, setValue] = useState(options[0].name);
+  const [value, setValue] = useState(options.length > 0 ? options[0].name : "");
 
   const { selectedOption } = useGetSelectedOption(options, value);
-
+  debugger;
   const handleChange = (e) => {
     setValue(e.target.value);
   };
@@ -23,9 +23,11 @@ const MultipleChoiceCells = ({ pax, cat, options }) => {
         />
       </TableCell>
       <TableCell>{pax}</TableCell>
-      <TableCell>{accounting.formatMoney(selectedOption.price, "€")}</TableCell>
       <TableCell>
-        {accounting.formatMoney(pax * selectedOption.price, "€")}
+        {accounting.formatMoney(selectedOption["price"], "€")}
+      </TableCell>
+      <TableCell>
+        {accounting.formatMoney(pax * selectedOption["price"], "€")}
       </TableCell>
     </>
   );

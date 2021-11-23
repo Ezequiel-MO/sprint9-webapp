@@ -10,7 +10,9 @@ export const renderTab = (item, index, value, category) => {
         return <Hotel hotel={item} key={item._id} />;
       case "dinner":
         return <Dinner dinnerOption={item} key={item._id} />;
-      case "events":
+      case "morning-events":
+        return <Event event={item} key={item._id} />;
+      case "afternoon-events":
         return <Event event={item} key={item._id} />;
       case "lunch":
         return <Lunch lunchOption={item} key={item._id} />;

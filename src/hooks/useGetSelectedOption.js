@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 
 const useGetSelectedOption = (array, value) => {
-  //finds if the value matches the namee property of any object in the array, and returns the object
+  //finds if the value matches the name property of any object in the array, and returns the object or null
   const [selectedOption, setSelectedOption] = useState({});
 
   useEffect(() => {
     const selectedOption = array.find((option) => option.name === value);
-    setSelectedOption(selectedOption);
+    selectedOption
+      ? setSelectedOption(selectedOption)
+      : setSelectedOption(null);
   }, [array, value]);
 
   return { selectedOption };
