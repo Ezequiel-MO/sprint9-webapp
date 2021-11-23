@@ -6,7 +6,8 @@ import {
   TableBody,
 } from "@mui/material";
 import DayRow from "./rows/DayRow";
-const Budget = ({ pax, schedule }) => {
+import HotelRows from "./rows/HotelRows";
+const Budget = ({ pax, schedule, hotels }) => {
   return (
     <Table stickyHeader size='small'>
       <TableHead>
@@ -20,6 +21,7 @@ const Budget = ({ pax, schedule }) => {
         </TableRow>
       </TableHead>
       <TableBody>
+        {hotels.length > 0 ? <HotelRows hotels={hotels} /> : null}
         {schedule.map((day) => (
           <DayRow key={day._id} day={day} pax={pax} />
         ))}

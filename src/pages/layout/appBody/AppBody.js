@@ -25,7 +25,11 @@ const AppBody = ({ codeMatch }) => {
       </div>
       <div>
         {codeMatch && (
-          <Budget pax={codeMatch.nrPax} schedule={codeMatch?.schedule} />
+          <Budget
+            pax={codeMatch?.nrPax}
+            schedule={codeMatch?.schedule}
+            hotels={codeMatch?.hotels}
+          />
         )}
       </div>
     </ScAppBodyRoot>
