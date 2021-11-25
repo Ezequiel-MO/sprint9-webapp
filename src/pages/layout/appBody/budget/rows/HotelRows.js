@@ -8,13 +8,16 @@ import { getHotelTotal } from "../logic";
 
 const HotelRows = ({ hotels }) => {
   const [open, setOpen] = useState(true);
-  const [value, setValue] = useState(hotels.length > 0 ? hotels[0].name : "");
-
-  const { selectedOption } = useGetSelectedOption(hotels, value);
+  const [value, setValue] = useState(hotels[0].name);
+  const [hotelPricesObj, setHotelPricesObj] = useState({});
 
   useEffect(() => {
-    console.log("selectedOption", selectedOption);
-  }, [selectedOption]);
+    //itereate hotels and find the hotel with the same name as the value
+    const selectedHotel = hotels.find((hotel) => hotel.name === value);
+    //console.log selectedHotel
+    console.log("hey , selected hotel here ", selectedHotel);
+    setHotelPricesObj(selectedHotel.price[0]);
+  }, [value, hotels]);
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -41,7 +44,7 @@ const HotelRows = ({ hotels }) => {
       <TableCell></TableCell>
       <TableCell></TableCell>
       <TableCell>
-        {accounting.formatMoney(getHotelTotal(selectedOption), "€")}
+        {accounting.formatMoney(getHotelTotal(hotelPricesObj), "€")}
       </TableCell>
     </TableRow>
   );
