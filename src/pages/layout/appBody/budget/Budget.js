@@ -6,7 +6,7 @@ import {
   TableBody,
 } from "@mui/material";
 import DayRow from "./rows/DayRow";
-import HotelRows from "./rows/rowCells/hotelRows/HotelRows";
+import HotelRows from "./rows/HotelRows";
 
 const Budget = ({ pax, schedule, hotels }) => {
   return (
