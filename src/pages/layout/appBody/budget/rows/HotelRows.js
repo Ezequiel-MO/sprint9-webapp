@@ -6,8 +6,7 @@ import useGetSelectedOption from "../../../../../hooks/useGetSelectedOption";
 import accounting from "accounting";
 import { getHotelTotal } from "../logic";
 
-const HotelRows = ({ hotels }) => {
-  const [open, setOpen] = useState(true);
+const HotelRows = ({ hotels, handleClick, open }) => {
   const [value, setValue] = useState(hotels[0].name);
   const [hotelPricesObj, setHotelPricesObj] = useState({});
 
@@ -25,7 +24,7 @@ const HotelRows = ({ hotels }) => {
   return (
     <TableRow>
       <TableCell>
-        <IconButton size='small' onClick={() => setOpen(!open)}>
+        <IconButton size='small' onClick={handleClick}>
           {open ? (
             <Icon icon='bx:bxs-up-arrow' />
           ) : (
