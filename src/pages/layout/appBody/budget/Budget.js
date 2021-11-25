@@ -6,7 +6,8 @@ import {
   TableBody,
 } from "@mui/material";
 import DayRow from "./rows/DayRow";
-import HotelRows from "./rows/HotelRows";
+import HotelRows from "./rows/rowCells/hotelRows/HotelRows";
+
 const Budget = ({ pax, schedule, hotels }) => {
   return (
     <Table stickyHeader size='small'>

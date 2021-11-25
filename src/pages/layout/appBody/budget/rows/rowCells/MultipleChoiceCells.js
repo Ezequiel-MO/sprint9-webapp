@@ -6,9 +6,7 @@ import MultipleChoice from "../../multipleChoice/MultipleChoice";
 
 const MultipleChoiceCells = ({ pax, cat, options }) => {
   const [value, setValue] = useState(options.length > 0 ? options[0].name : "");
-
   const { selectedOption } = useGetSelectedOption(options, value);
-  debugger;
   const handleChange = (e) => {
     setValue(e.target.value);
   };

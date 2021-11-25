@@ -1,8 +1,9 @@
 import { IconButton, TableCell, TableRow } from "@mui/material";
 import { useState } from "react";
 import { Icon } from "@iconify/react";
+import HotelChoice from "./HotelChoice";
 
-const HotelRows = () => {
+const HotelRows = ({ hotels }) => {
   const [open, setOpen] = useState(true);
   return (
     <TableRow>
@@ -16,7 +17,9 @@ const HotelRows = () => {
         </IconButton>
       </TableCell>
       <TableCell></TableCell>
-      <TableCell></TableCell>
+      <TableCell>
+        <HotelChoice hotels={hotels} />
+      </TableCell>
     </TableRow>
   );
 };
