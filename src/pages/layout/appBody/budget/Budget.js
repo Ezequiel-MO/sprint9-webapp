@@ -9,6 +9,7 @@ import DayRow from "./rows/DayRow";
 import HotelBreakdownRows from "./rows/hotelBreakdownRows/HotelBreakdownRows";
 import HotelRows from "./rows/HotelRows";
 import { useState } from "react";
+import TotalBudgetCost from "./TotalBudgetCost";
 
 const Budget = ({ pax, schedule, hotels }) => {
   const [open, setOpen] = useState(true);
@@ -51,6 +52,11 @@ const Budget = ({ pax, schedule, hotels }) => {
         {schedule.map((day) => (
           <DayRow key={day._id} day={day} pax={pax} />
         ))}
+        <TotalBudgetCost
+          pax={pax}
+          selectedHotel={hotelPricesObj}
+          schedule={schedule}
+        />
       </TableBody>
     </Table>
   );

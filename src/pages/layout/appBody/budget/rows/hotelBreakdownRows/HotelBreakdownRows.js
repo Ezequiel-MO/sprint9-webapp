@@ -11,6 +11,14 @@ import BreakdownRow from "./BreakdownRow";
 
 const HotelBreakdownRows = ({ open, hotels, nights, selectedHotel }) => {
   console.log("hotels breakdown", hotels);
+  const {
+    DUInr,
+    DUIprice,
+    DoubleRoomNr,
+    DoubleRoomPrice,
+    DailyTax,
+    breakfast,
+  } = selectedHotel;
   return (
     <TableRow>
       <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -28,28 +36,28 @@ const HotelBreakdownRows = ({ open, hotels, nights, selectedHotel }) => {
               </TableHead>
               <TableBody>
                 <BreakdownRow
-                  units={selectedHotel.DUInr}
-                  rate={selectedHotel.DUIprice}
+                  units={DUInr}
+                  rate={DUIprice}
                   nights={nights}
                   title='Double Room Single Use'
                 />
                 <BreakdownRow
-                  units={selectedHotel.DoubleRoomNr}
-                  rate={selectedHotel.DoubleRoomPrice}
+                  units={DoubleRoomNr}
+                  rate={DoubleRoomPrice}
                   nights={nights}
                   title='Double Room //Twin Room'
                 />
                 <BreakdownRow
-                  units={selectedHotel.DUInr + selectedHotel.DoubleRoomNr * 2}
-                  rate={selectedHotel.DailyTax}
+                  units={DUInr + DoubleRoomNr * 2}
+                  rate={DailyTax}
                   nights={nights}
                   title='City Tax'
                 />
 
-                {selectedHotel.breakfast && (
+                {breakfast && (
                   <BreakdownRow
-                    units={selectedHotel.DUInr + selectedHotel.DoubleRoomNr * 2}
-                    rate={selectedHotel.breakfast}
+                    units={DUInr + DoubleRoomNr * 2}
+                    rate={breakfast}
                     nights={nights}
                     title='Breakfast'
                   />
