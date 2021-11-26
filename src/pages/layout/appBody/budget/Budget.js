@@ -12,7 +12,7 @@ import { useState } from "react";
 
 const Budget = ({ pax, schedule, hotels }) => {
   const [open, setOpen] = useState(true);
-
+  const [hotelPricesObj, setHotelPricesObj] = useState({});
   const handleClick = () => {
     setOpen(!open);
   };
@@ -32,8 +32,20 @@ const Budget = ({ pax, schedule, hotels }) => {
       <TableBody>
         {hotels.length > 0 ? (
           <>
-            <HotelRows hotels={hotels} handleClick={handleClick} open={open} />
-            <HotelBreakdownRows hotels={hotels} open={open} />
+            <HotelRows
+              hotels={hotels}
+              handleClick={handleClick}
+              open={open}
+              nights={schedule.length}
+              setHotelPricesObj={setHotelPricesObj}
+              hotelPricesObj={hotelPricesObj}
+            />
+            <HotelBreakdownRows
+              hotels={hotels}
+              open={open}
+              nights={schedule.length}
+              selectedHotel={hotelPricesObj}
+            />
           </>
         ) : null}
         {schedule.map((day) => (

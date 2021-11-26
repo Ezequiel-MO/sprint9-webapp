@@ -2,13 +2,18 @@ import { IconButton, TableCell, TableRow } from "@mui/material";
 import { useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
 import MultipleChoice from "../multipleChoice/MultipleChoice";
-import useGetSelectedOption from "../../../../../hooks/useGetSelectedOption";
 import accounting from "accounting";
 import { getHotelTotal } from "../logic";
 
-const HotelRows = ({ hotels, handleClick, open }) => {
+const HotelRows = ({
+  hotels,
+  handleClick,
+  open,
+  nights,
+  setHotelPricesObj,
+  hotelPricesObj,
+}) => {
   const [value, setValue] = useState(hotels[0].name);
-  const [hotelPricesObj, setHotelPricesObj] = useState({});
 
   useEffect(() => {
     //itereate hotels and find the hotel with the same name as the value
@@ -43,7 +48,7 @@ const HotelRows = ({ hotels, handleClick, open }) => {
       <TableCell></TableCell>
       <TableCell></TableCell>
       <TableCell>
-        {accounting.formatMoney(getHotelTotal(hotelPricesObj), "€")}
+        {accounting.formatMoney(getHotelTotal(hotelPricesObj, nights), "€")}
       </TableCell>
     </TableRow>
   );
