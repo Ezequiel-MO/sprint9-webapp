@@ -7,11 +7,7 @@ import {
   TableRow,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import accounting from "accounting";
-import BreakfastRow from "./BreakfastRow";
-import DailyTaxRow from "./DailyTaxRow";
-import DoubleRoomRow from "./DoubleRoomRow";
-import DUIRow from "./DUIRow";
+import BreakdownRow from "./BreakdownRow";
 
 const HotelBreakdownRows = ({ open, hotels, nights, selectedHotel }) => {
   console.log("hotels breakdown", hotels);
@@ -31,11 +27,32 @@ const HotelBreakdownRows = ({ open, hotels, nights, selectedHotel }) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                <DUIRow selectedHotel={selectedHotel} nights={nights} />
-                <DoubleRoomRow selectedHotel={selectedHotel} nights={nights} />
-                <DailyTaxRow selectedHotel={selectedHotel} nights={nights} />
+                <BreakdownRow
+                  units={selectedHotel.DUInr}
+                  rate={selectedHotel.DUIprice}
+                  nights={nights}
+                  title='Double Room Single Use'
+                />
+                <BreakdownRow
+                  units={selectedHotel.DoubleRoomNr}
+                  rate={selectedHotel.DoubleRoomPrice}
+                  nights={nights}
+                  title='Double Room //Twin Room'
+                />
+                <BreakdownRow
+                  units={selectedHotel.DUInr + selectedHotel.DoubleRoomNr * 2}
+                  rate={selectedHotel.DailyTax}
+                  nights={nights}
+                  title='City Tax'
+                />
+
                 {selectedHotel.breakfast && (
-                  <BreakfastRow selectedHotel={selectedHotel} nights={nights} />
+                  <BreakdownRow
+                    units={selectedHotel.DUInr + selectedHotel.DoubleRoomNr * 2}
+                    rate={selectedHotel.breakfast}
+                    nights={nights}
+                    title='Breakfast'
+                  />
                 )}
               </TableBody>
             </Table>
