@@ -8,6 +8,10 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import accounting from "accounting";
+import BreakfastRow from "./BreakfastRow";
+import DailyTaxRow from "./DailyTaxRow";
+import DoubleRoomRow from "./DoubleRoomRow";
+import DUIRow from "./DUIRow";
 
 const HotelBreakdownRows = ({ open, hotels, nights, selectedHotel }) => {
   console.log("hotels breakdown", hotels);
@@ -27,22 +31,12 @@ const HotelBreakdownRows = ({ open, hotels, nights, selectedHotel }) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                <TableRow>
-                  <TableCell component='th' scope='row'>
-                    Double Room for Single Use
-                  </TableCell>
-                  <TableCell>{selectedHotel.DUInr}</TableCell>
-                  <TableCell>{nights}</TableCell>
-                  <TableCell>
-                    {accounting.formatMoney(selectedHotel.DUIprice, "€")}
-                  </TableCell>
-                  <TableCell>
-                    {accounting.formatMoney(
-                      selectedHotel.DUInr * selectedHotel.DUIprice * nights,
-                      "€"
-                    )}
-                  </TableCell>
-                </TableRow>
+                <DUIRow selectedHotel={selectedHotel} nights={nights} />
+                <DoubleRoomRow selectedHotel={selectedHotel} nights={nights} />
+                <DailyTaxRow selectedHotel={selectedHotel} nights={nights} />
+                {selectedHotel.breakfast && (
+                  <BreakfastRow selectedHotel={selectedHotel} nights={nights} />
+                )}
               </TableBody>
             </Table>
           </Box>

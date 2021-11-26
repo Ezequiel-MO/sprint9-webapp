@@ -6,7 +6,7 @@ import {
   TableBody,
 } from "@mui/material";
 import DayRow from "./rows/DayRow";
-import HotelBreakdownRows from "./rows/HotelBreakdownRows";
+import HotelBreakdownRows from "./rows/hotelBreakdownRows/HotelBreakdownRows";
 import HotelRows from "./rows/HotelRows";
 import { useState } from "react";
 
