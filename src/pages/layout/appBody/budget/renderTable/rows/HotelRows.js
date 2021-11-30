@@ -1,9 +1,9 @@
 import { IconButton, TableCell, TableRow } from "@mui/material";
 import { useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
-import MultipleChoice from "../multipleChoice/MultipleChoice";
+import MultipleChoice from "../../multipleChoice/MultipleChoice";
 import accounting from "accounting";
-import { getHotelTotal } from "../logic";
+import { getHotelTotal } from "../../logic";
 
 const HotelRows = ({
   hotels,

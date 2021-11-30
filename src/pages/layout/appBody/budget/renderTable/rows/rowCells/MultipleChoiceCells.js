@@ -1,6 +1,6 @@
 import { accounting } from "accounting";
 import { TableCell } from "@mui/material";
-import MultipleChoice from "../../multipleChoice/MultipleChoice";
+import MultipleChoice from "../../../multipleChoice/MultipleChoice";
 import { useState, useEffect } from "react";
 
 const MultipleChoiceCells = ({ pax, cat, id, options, date }) => {
