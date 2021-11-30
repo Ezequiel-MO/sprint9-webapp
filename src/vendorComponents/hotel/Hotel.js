@@ -26,10 +26,8 @@ const Hotel = ({ hotel }) => {
   }, [hotel.imageContentUrl]);
 
   useEffect(() => {
-    console.log("text content type of =>", hotel.textContent[0]);
     //convert hotel.textContent string to array
     const textContentArr = hotel.textContent[0].split("\n");
-    console.log("text content array=>", textContentArr);
   }, [hotel.textContent]);
 
   useEffect(() => {

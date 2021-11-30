@@ -6,9 +6,7 @@ const useGetSelectedOption = (array, value) => {
 
   useEffect(() => {
     const selectedOption = array.find((option) => option.name === value);
-    selectedOption
-      ? setSelectedOption(selectedOption)
-      : setSelectedOption(null);
+    selectedOption && setSelectedOption(selectedOption);
   }, [array, value]);
 
   return { selectedOption };

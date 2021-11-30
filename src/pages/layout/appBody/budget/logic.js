@@ -1,5 +1,4 @@
 export const getHotelTotal = (obj, numberNights) => {
-  console.log("prices object=>", obj.DUInr);
   const {
     DUInr,
     DUIprice,
@@ -16,7 +15,6 @@ export const getHotelTotal = (obj, numberNights) => {
       breakfast * DoubleRoomNr * 2 +
       DailyTax * DUInr +
       DailyTax * DoubleRoomNr * 2);
-
   return hotelTotal;
 };
 

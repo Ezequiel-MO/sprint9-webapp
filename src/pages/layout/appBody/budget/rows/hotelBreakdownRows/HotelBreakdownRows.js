@@ -10,7 +10,6 @@ import { Box } from "@mui/system";
 import BreakdownRow from "./BreakdownRow";
 
 const HotelBreakdownRows = ({ open, hotels, nights, selectedHotel }) => {
-  console.log("hotels breakdown", hotels);
   const {
     DUInr,
     DUIprice,

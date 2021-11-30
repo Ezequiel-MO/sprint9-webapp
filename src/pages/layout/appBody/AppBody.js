@@ -5,8 +5,6 @@ import Hotel from "../../../vendorComponents/hotel/Hotel";
 import Budget from "./budget/Budget";
 
 const AppBody = ({ codeMatch }) => {
-  console.log("code match in app body=>", codeMatch);
-
   return (
     <ScAppBodyRoot elevation={2}>
       <div>

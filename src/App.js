@@ -5,17 +5,24 @@ import Layout from "./pages/layout/Layout";
 import { useState } from "react";
 import useGetProjects from "./hooks/useGetProjects";
 import { findCodeThatMatches } from "./pages/welcome/utils";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { SET_BUDGET_SCHEDULE } from "./features/BudgetSlice";
 
 function App() {
   // set the state for the code that matches the project with user input
   const [codeMatch, setCodeMatch] = useState("");
+  const dispatch = useDispatch();
   //retrieve the projects from the database via a custom hook
   const { projects } = useGetProjects();
 
+  useEffect(() => {
+    //then dispatch the action to set the budget schedule
+    dispatch(SET_BUDGET_SCHEDULE(codeMatch["schedule"]));
+  }, [codeMatch]);
   //submit function
   const compareCodes = (e, userCode) => {
     e.preventDefault();
-    console.log("codes compared", userCode);
     //iterate projects and find the code that matches the user code
     const codeMatch = findCodeThatMatches(projects, userCode);
     //update the state with the code match

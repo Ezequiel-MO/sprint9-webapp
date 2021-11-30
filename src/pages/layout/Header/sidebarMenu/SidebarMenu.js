@@ -70,7 +70,6 @@ const SidebarMenu = ({ codeMatch }) => {
   }, [codeMatch]);
 
   const renderTree = (nodes) => {
-    console.log("nodes=>", nodes);
     return (
       <TreeItem nodeId={nodes.id} label={nodes.name}>
         {nodes.children &&

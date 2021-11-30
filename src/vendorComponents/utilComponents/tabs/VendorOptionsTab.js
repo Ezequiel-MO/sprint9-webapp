@@ -31,10 +31,7 @@ const VendorOptionsTab = ({ tabList, category }) => {
     setValue(tabOption);
   }, [tabOption]);
 
-  console.log("tabList=> ", tabList);
-
   const handleChange = (ev, newValue) => {
-    console.log("new value=>", newValue);
     setValue(newValue);
   };
 
