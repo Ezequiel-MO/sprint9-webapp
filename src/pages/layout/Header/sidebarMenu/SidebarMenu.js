@@ -71,9 +71,9 @@ const SidebarMenu = ({ codeMatch }) => {
 
   const renderTree = (nodes) => {
     return (
-      <TreeItem nodeId={nodes.id} label={nodes.name}>
+      <TreeItem nodeId='root' label={nodes.name}>
         {nodes.children &&
-          nodes.children.map((node) => (
+          nodes.children?.map((node) => (
             <TreeItem
               nodeId={node.id}
               label={node.name}

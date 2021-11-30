@@ -1,10 +1,11 @@
+import Paragraph from "../../utilComponents/paragraph/Paragraph";
 import RenderPhotos from "../../utilComponents/renderPhotos/RenderPhotos";
 
 const Lunch = ({ lunchOption }) => {
   return (
     <div id={lunchOption._id}>
       <h5>{lunchOption.name}</h5>
-      <p>{lunchOption.textContent}</p>
+      <Paragraph textContent={lunchOption.textContent} />
       <RenderPhotos images={lunchOption.imageContentUrl} />
     </div>
   );

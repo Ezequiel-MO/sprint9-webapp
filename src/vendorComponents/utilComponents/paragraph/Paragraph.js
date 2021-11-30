@@ -1,13 +1,10 @@
 import parse from "html-react-parser";
 
 const Paragraph = ({ textContent }) => {
-  return (
-    <div>
-      {textContent.map((item, index) => {
-        return <p key={index}>{parse(item)}</p>;
-      })}
-    </div>
-  );
+  //parse an array of strings,
+  const textContentString = JSON.parse(textContent);
+
+  return <div>{parse(`${textContentString}`)}</div>;
 };
 
 export default Paragraph;

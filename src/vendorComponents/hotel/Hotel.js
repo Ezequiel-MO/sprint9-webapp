@@ -27,7 +27,7 @@ const Hotel = ({ hotel }) => {
 
   useEffect(() => {
     //convert hotel.textContent string to array
-    const textContentArr = hotel.textContent[0].split("\n");
+    console.log("text content =>", hotel.textContent);
   }, [hotel.textContent]);
 
   useEffect(() => {
