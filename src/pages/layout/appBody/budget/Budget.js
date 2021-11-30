@@ -52,11 +52,7 @@ const Budget = ({ pax, schedule, hotels }) => {
         {schedule.map((day) => (
           <DayRow key={day._id} day={day} pax={pax} />
         ))}
-        <TotalBudgetCost
-          pax={pax}
-          selectedHotel={hotelPricesObj}
-          schedule={schedule}
-        />
+        <TotalBudgetCost pax={pax} selectedHotel={hotelPricesObj} />
       </TableBody>
     </Table>
   );
