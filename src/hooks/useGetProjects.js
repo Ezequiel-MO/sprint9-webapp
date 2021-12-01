@@ -8,6 +8,8 @@ const useGetProjects = () => {
 
   const {
     data: { projects: fetchedProjects },
+    isLoading,
+    fetchError,
   } = useAxiosFetch(`${baseURL}/projects`);
 
   //update the state with the projects
@@ -15,7 +17,7 @@ const useGetProjects = () => {
     setProjects(fetchedProjects);
   }, [fetchedProjects]);
 
-  return { projects };
+  return { projects, isLoading, fetchError };
 };
 
 export default useGetProjects;
