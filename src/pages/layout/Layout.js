@@ -1,14 +1,18 @@
 import { useState } from "react";
-import { CssBaseline, Drawer, Hidden } from "@mui/material";
+import { Drawer, Hidden } from "@mui/material";
 import ScrollToTop from "react-scroll-to-top";
 import Header from "./Header/Header";
-import SidebarMenu from "./Header/sidebarMenu/SidebarMenu";
+import SidebarMenu from "./Header/headerElements/sidebarMenu/SidebarMenu";
 import AppBody from "./appBody/AppBody";
 import { useLocation } from "react-router-dom";
+import { MainContainer } from "./Header/styles";
+import { useSelector } from "react-redux";
+import { selectDarkMode } from "../../features/DarkModeSlice";
 
 const Layout = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
+  const darkMode = useSelector(selectDarkMode);
 
   const {
     state: { codeMatch },
@@ -22,16 +26,14 @@ const Layout = (props) => {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <div>
+    <>
       <ScrollToTop smooth />
-      <CssBaseline />
-      <Header handleDrawerToggle={handleDrawerToggle} />
       <nav>
         <Hidden smUp implementation='css'>
           <Drawer
             container={container}
             variant='temporary'
-            anchor='right'
+            anchor='left'
             open={mobileOpen}
             onClose={handleDrawerToggle}
             ModalProps={{
@@ -42,10 +44,11 @@ const Layout = (props) => {
           </Drawer>
         </Hidden>
       </nav>
-      <main>
+      <Header handleDrawerToggle={handleDrawerToggle} />
+      <MainContainer darkMode={darkMode}>
         <AppBody codeMatch={codeMatch} />
-      </main>
-    </div>
+      </MainContainer>
+    </>
   );
 };
 

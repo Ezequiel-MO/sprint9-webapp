@@ -1,13 +1,9 @@
-import { Typography } from "@mui/material";
-import { Icon } from "@iconify/react";
-import { getHotelTotal, totalProgramCost } from "../logic";
 import { useSelector } from "react-redux";
-import { selectBudget } from "../../../../../features/BudgetSlice";
+import { selectBudget } from "../../../../../../features/BudgetSlice";
 import { useState, useEffect } from "react";
-import { SubTotalsPaper } from "../styles";
-import accounting from "accounting";
+import { getHotelTotal, totalProgramCost } from "../../logic";
 
-const BudgetPerCategory = ({ selectedHotel, pax }) => {
+const BudgetPerCategoryLogic = (selectedHotel, pax) => {
   const schedule = useSelector(selectBudget);
   const [hotelCost, setHotelCost] = useState(0);
   const [costObj, setCostObj] = useState({
@@ -54,22 +50,7 @@ const BudgetPerCategory = ({ selectedHotel, pax }) => {
       value: (costObj.totalLunch + costObj.totalDinner) * pax,
     },
   ];
-  return (
-    <SubTotalsPaper>
-      <Typography variant='h6' align='center'>
-        Subtotals
-      </Typography>
-      {renderData.map((data) => (
-        <div key={data.title}>
-          <Typography variant='h6'>{data.title}</Typography>
-          <Icon icon={data.icon} color='#ea5933' width='70' />
-          <Typography variant='h6'>
-            {accounting.formatMoney(data.value, "eur ", 0, ",", ".")}
-          </Typography>
-        </div>
-      ))}
-    </SubTotalsPaper>
-  );
+  return { renderData };
 };
 
-export default BudgetPerCategory;
+export default BudgetPerCategoryLogic;

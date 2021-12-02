@@ -1,21 +1,25 @@
-import { ScAppBar, ScToolbar, HeaderLeft, ScButton } from "./styles";
+import {
+  ScAppBar,
+  ScToolbar,
+  HeaderLeft,
+  ScButton,
+  HeaderRight,
+} from "./styles";
 import { Icon } from "@iconify/react";
 import logo from "../../../assets/logo.svg";
+import logoDark from "../../../assets/logoDark.svg";
 import { Link } from "react-router-dom";
-import { useScrollTrigger, Slide } from "@mui/material";
-
-function HideOnScroll(props) {
-  const { children, window } = props;
-  const trigger = useScrollTrigger({ target: window ? window() : undefined });
-
-  return (
-    <Slide appear={false} direction='down' in={!trigger}>
-      {children}
-    </Slide>
-  );
-}
+import HideOnScroll from "./headerElements/HideOnScroll";
+import { IconButton, Typography } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectDarkMode,
+  TOGGLE_DARKMODE,
+} from "../../../features/DarkModeSlice";
 
 const Header = ({ handleDrawerToggle }) => {
+  const darkMode = useSelector(selectDarkMode);
+  const dispatch = useDispatch();
   return (
     <HideOnScroll>
       <ScAppBar>
@@ -25,18 +29,30 @@ const Header = ({ handleDrawerToggle }) => {
               <Icon icon='bytesize:menu' color='#ea5933' width='30' />
             </button>
             <Link to='/'>
-              <img src={logo} alt='company-logo' />
+              <img src={darkMode ? logoDark : logo} alt='company-logo' />
             </Link>
+          </HeaderLeft>
+          <HeaderRight>
+            <IconButton onClick={() => dispatch(TOGGLE_DARKMODE(!darkMode))}>
+              <Icon
+                icon={darkMode ? "octicon:sun-16" : "akar-icons:moon-fill"}
+                color={darkMode ? "yellow" : "blue"}
+                width='45'
+              />
+            </IconButton>
             <ScButton>
-              active code
+              <span>
+                <Typography variant='overline'>Group Briefing ...</Typography>
+              </span>
+
               <span>
                 <Icon icon='mdi:chevron-down' color='#ea5933' width='24' />
               </span>
+              <Link to='/login' data-testid='avatar'>
+                <Icon icon='whh:avatar' color='#ea5933' width='48' />
+              </Link>
             </ScButton>
-          </HeaderLeft>
-          <Link to='/login' data-testid='avatar'>
-            <Icon icon='whh:avatar' color='#ea5933' width='48' />
-          </Link>
+          </HeaderRight>
         </ScToolbar>
       </ScAppBar>
     </HideOnScroll>

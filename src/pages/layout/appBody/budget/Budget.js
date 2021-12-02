@@ -4,13 +4,14 @@ import {
   TableHead,
   TableRow,
   TableBody,
+  Paper,
 } from "@mui/material";
 import DayRow from "./renderTable/rows/DayRow";
 import HotelBreakdownRows from "./renderTable/rows/hotelBreakdownRows/HotelBreakdownRows";
 import HotelRows from "./renderTable/rows/HotelRows";
 import { useState } from "react";
 import TotalBudgetCost from "./totalBudgetCost/TotalBudgetCost";
-import BudgetPerCategory from "./totalBudgetCost/BudgetPerCategory";
+import BudgetPerCategory from "./totalBudgetCost/budgetPerCategory/BudgetPerCategory";
 
 const Budget = ({ pax, schedule, hotels }) => {
   const [open, setOpen] = useState(true);
@@ -20,7 +21,7 @@ const Budget = ({ pax, schedule, hotels }) => {
   };
 
   return (
-    <>
+    <Paper>
       <Table stickyHeader size='small'>
         <TableHead>
           <TableRow>
@@ -58,7 +59,7 @@ const Budget = ({ pax, schedule, hotels }) => {
         </TableBody>
       </Table>
       <BudgetPerCategory pax={pax} selectedHotel={hotelPricesObj} />
-    </>
+    </Paper>
   );
 };
 

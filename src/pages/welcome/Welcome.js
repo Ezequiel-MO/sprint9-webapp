@@ -22,7 +22,7 @@ const Welcome = () => {
     //if codeMatch is true
     if (codeMatch) {
       //store codeMatchin local storage
-      localStorage.setItem("codeMatch", JSON.stringify(codeMatch));
+      localStorage.setItem("schedule", JSON.stringify(codeMatch["schedule"]));
       //then dispatch the action to set the budget schedule
       dispatch(SET_BUDGET_SCHEDULE(codeMatch["schedule"]));
       //redirect to "./app" url

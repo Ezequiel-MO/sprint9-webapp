@@ -3,10 +3,13 @@ import { ScAppBodyRoot } from "../styles";
 import VendorOptionsTab from "../../../vendorComponents/utilComponents/tabs/VendorOptionsTab";
 import Hotel from "../../../vendorComponents/hotel/Hotel";
 import Budget from "./budget/Budget";
+import { useSelector } from "react-redux";
+import { selectDarkMode } from "../../../features/DarkModeSlice";
 
 const AppBody = ({ codeMatch }) => {
+  const darkMode = useSelector(selectDarkMode);
   return (
-    <ScAppBodyRoot elevation={2}>
+    <ScAppBodyRoot elevation={2} darkMode={darkMode}>
       <div>
         {codeMatch && codeMatch.hotels.length > 1 ? (
           <VendorOptionsTab tabList={codeMatch.hotels} category='hotels' />

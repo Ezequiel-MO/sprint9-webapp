@@ -3,7 +3,7 @@ import { Icon } from "@iconify/react";
 import { Link, animateScroll as scroll } from "react-scroll";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { SET_TABOPTION } from "../../../../features/TabOptionSlice";
+import { SET_TABOPTION } from "../../../../../features/TabOptionSlice";
 
 const SidebarMenu = ({ codeMatch }) => {
   const [sidebarObj, setSidebarObj] = useState({});

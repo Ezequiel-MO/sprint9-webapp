@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 export const budgetSlice = createSlice({
   name: "budget",
   initialState: {
-    schedule: [],
+    schedule:
+      //get schedule array from local storage
+      JSON.parse(localStorage.getItem("schedule")) || [],
   },
   reducers: {
     SET_BUDGET_SCHEDULE: (state, action) => {
