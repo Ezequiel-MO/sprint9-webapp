@@ -10,17 +10,23 @@ const Footer = () => {
     <FooterContainer darkMode={darkMode}>
       <SocialIcons>
         <IconButton>
-          <a href='https://www.linkedin.com/company/335093/admin/'>
+          <a
+            href='https://www.linkedin.com/company/335093/admin/'
+            target='_blank'
+          >
             <Icon icon='akar-icons:linkedin-fill' width='30' color='#ccc' />
           </a>
         </IconButton>
         <IconButton>
-          <a href='https://www.instagram.com/cutting_edge_events/'>
+          <a
+            href='https://www.instagram.com/cutting_edge_events/'
+            target='_blank'
+          >
             <Icon icon='akar-icons:instagram-fill' width='30' color='#ccc' />
           </a>
         </IconButton>
         <IconButton>
-          <a href='https://www.facebook.com/EsCuttingEdge/'>
+          <a href='https://www.facebook.com/EsCuttingEdge/' target='_blank'>
             <Icon icon='akar-icons:facebook-fill' width='30' color='#ccc' />
           </a>
         </IconButton>

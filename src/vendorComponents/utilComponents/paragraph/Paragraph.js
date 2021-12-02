@@ -6,7 +6,9 @@ const Paragraph = ({ textContent }) => {
   const textContentString = JSON.parse(textContent);
 
   return (
-    <Typography variant='body'>{parse(`${textContentString}`)}</Typography>
+    <Typography variant='body' paragraph>
+      {parse(`${textContentString}`)}
+    </Typography>
   );
 };
 
