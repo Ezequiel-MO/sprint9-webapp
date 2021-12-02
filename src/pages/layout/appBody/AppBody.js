@@ -5,6 +5,7 @@ import Hotel from "../../../vendorComponents/hotel/Hotel";
 import Budget from "./budget/Budget";
 import { useSelector } from "react-redux";
 import { selectDarkMode } from "../../../features/DarkModeSlice";
+import Footer from "./footer/Footer";
 
 const AppBody = ({ codeMatch }) => {
   const darkMode = useSelector(selectDarkMode);
@@ -33,6 +34,7 @@ const AppBody = ({ codeMatch }) => {
           />
         )}
       </div>
+      <Footer />
     </ScAppBodyRoot>
   );
 };

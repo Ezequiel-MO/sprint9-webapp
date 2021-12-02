@@ -42,14 +42,22 @@ const Header = ({ handleDrawerToggle }) => {
             </IconButton>
             <ScButton>
               <span>
+                <Typography variant='overline'>Overview ...</Typography>
+              </span>
+              <Icon icon='grommet-icons:overview' color='#ea5933' width='45' />
+              <span>
+                <Icon icon='mdi:chevron-down' color='#ea5933' width='24' />
+              </span>
+            </ScButton>
+            <ScButton>
+              <span>
                 <Typography variant='overline'>Group Briefing ...</Typography>
               </span>
-
               <span>
                 <Icon icon='mdi:chevron-down' color='#ea5933' width='24' />
               </span>
               <Link to='/login' data-testid='avatar'>
-                <Icon icon='whh:avatar' color='#ea5933' width='48' />
+                <Icon icon='whh:avatar' color='#ea5933' width='42' />
               </Link>
             </ScButton>
           </HeaderRight>
