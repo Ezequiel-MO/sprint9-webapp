@@ -16,16 +16,14 @@ const HotelRows = ({
   const [value, setValue] = useState(hotels[0].name);
 
   useEffect(() => {
-    //itereate hotels and find the hotel with the same name as the value
     const selectedHotel = hotels.find((hotel) => hotel.name === value);
-    //console.log selectedHotel
-    console.log("hey , selected hotel here ", selectedHotel);
     setHotelPricesObj(selectedHotel.price[0]);
   }, [value, hotels]);
 
   const handleChange = (event) => {
     setValue(event.target.value);
   };
+
   return (
     <TableRow>
       <TableCell>

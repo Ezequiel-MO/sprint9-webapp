@@ -18,14 +18,19 @@ function App() {
         main: "#ea5933",
         contrastText: "#ccc",
       },
-      typography: {
-        fontFamily: "Barlow Condensed",
-        fontWeightLight: 400,
-        fontWeightRegular: 500,
-        fontWeightBold: 700,
-        /* h6: {
-          color: "#ea5933",
-        }, */
+    },
+    typography: {
+      fontFamily: "Barlow Condensed",
+      fontSize: 18,
+      fontWeightLight: 400,
+      fontWeightRegular: 500,
+      fontWeightBold: 700,
+      h5: {
+        backgroundColor: "#ea5933",
+        color: "#fff",
+        padding: "0.5rem",
+        marginBottom: "0.5rem",
+        width: "fit-content",
       },
     },
 
