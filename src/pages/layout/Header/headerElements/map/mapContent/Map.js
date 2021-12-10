@@ -4,10 +4,11 @@ import getCenter from "geolib/es/getCenter";
 import { Icon } from "@iconify/react";
 
 const Map = () => {
+  const [selectedLocation, setSelectedLocation] = useState({});
   const coords = [
-    { latitude: 41.368679, longitude: 2.189983 },
-    { latitude: 41.394591, longitude: 2.157261 },
-    { latitude: 41.389121, longitude: 2.162645 },
+    { latitude: 41.368679, longitude: 2.189983, name: "Hotel W" },
+    { latitude: 41.394591, longitude: 2.157261, name: "Hotel X" },
+    { latitude: 41.389121, longitude: 2.162645, name: "Hotel Z" },
   ];
   const center = getCenter(coords);
   const [viewport, setViewport] = useState({
@@ -15,7 +16,7 @@ const Map = () => {
     height: "100%",
     latitude: center.latitude,
     longitude: center.longitude,
-    zoom: 11,
+    zoom: 12,
   });
 
   return (
@@ -33,8 +34,25 @@ const Map = () => {
             offsetLeft={-20}
             offsetTop={-10}
           >
-            <Icon icon='bx:bx-hotel' color='#ea5933' width='40' />
+            <p onClick={() => setSelectedLocation(coord)}>
+              <Icon icon='bx:bx-hotel' color='#ea5933' width='40' />
+            </p>
           </Marker>
+          {selectedLocation.name === coord.name && (
+            <Popup
+              latitude={coord.latitude}
+              longitude={coord.longitude}
+              closeButton={true}
+              onClose={() => setSelectedLocation({})}
+              anchor='top'
+            >
+              <div>
+                <h2>{selectedLocation.name}</h2>
+                <p>{selectedLocation.latitude}</p>
+                <p>{selectedLocation.longitude}</p>
+              </div>
+            </Popup>
+          )}
         </div>
       ))}
     </ReactMapGL>
