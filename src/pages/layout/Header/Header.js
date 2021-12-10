@@ -19,7 +19,7 @@ import {
 import Overview from "./headerElements/overview/Overview";
 import { useState } from "react";
 
-const Header = ({ handleDrawerToggle }) => {
+const Header = ({ handleDrawerToggle, codeMatch }) => {
   const darkMode = useSelector(selectDarkMode);
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
@@ -74,7 +74,7 @@ const Header = ({ handleDrawerToggle }) => {
           </ScToolbar>
         </ScAppBar>
       </HideOnScroll>
-      <Overview open={open} handleClose={handleClose} />
+      <Overview open={open} handleClose={handleClose} codeMatch={codeMatch} />
     </>
   );
 };

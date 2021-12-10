@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const OverviewContainer = styled(Box)`
   position: absolute;
-  top: 20%;
+  top: 50%;
   left: 50%;
   background-color: #fff;
   padding: 2rem;

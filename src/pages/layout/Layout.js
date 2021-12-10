@@ -44,7 +44,7 @@ const Layout = (props) => {
           </Drawer>
         </Hidden>
       </nav>
-      <Header handleDrawerToggle={handleDrawerToggle} />
+      <Header handleDrawerToggle={handleDrawerToggle} codeMatch={codeMatch} />
       <MainContainer darkMode={darkMode}>
         <AppBody codeMatch={codeMatch} />
       </MainContainer>
