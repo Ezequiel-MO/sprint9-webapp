@@ -1,4 +1,4 @@
-import { TableRow, Typography } from "@mui/material";
+import { TableRow, TableCell, Typography } from "@mui/material";
 import styled from "styled-components";
 
 export const ScTableRow = styled(TableRow)`
@@ -11,4 +11,8 @@ export const ScTypography = styled(Typography)`
   & span {
     margin-left: 10px;
   }
+`;
+
+export const ScTableCell = styled(TableCell)`
+  cursor: pointer;
 `;

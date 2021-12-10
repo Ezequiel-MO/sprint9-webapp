@@ -1,6 +1,6 @@
 import { TreeView, TreeItem } from "@mui/lab";
 import { Icon } from "@iconify/react";
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { SET_TABOPTION } from "../../../../../features/TabOptionSlice";

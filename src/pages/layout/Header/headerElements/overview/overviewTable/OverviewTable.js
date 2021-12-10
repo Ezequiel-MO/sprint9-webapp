@@ -10,12 +10,13 @@ import {
 } from "@mui/material";
 import { Icon } from "@iconify/react";
 import OTLogic from "./OTLogic";
-import { ScTypography, ScTableRow } from "./styles";
+import { ScTypography, ScTableRow, ScTableCell } from "./styles";
+import { Link } from "react-scroll";
 
 const OverviewTable = ({ codeMatch }) => {
   console.log("codeMatch", codeMatch);
 
-  const { transformDates, getDays, getEvents } = OTLogic();
+  const { transformDates, getDays, getEvents, renderEvent } = OTLogic();
 
   return (
     <TableContainer component={Paper} elevation={0}>
@@ -47,7 +48,16 @@ const OverviewTable = ({ codeMatch }) => {
               </ScTypography>
             </TableCell>
             {getEvents(codeMatch.schedule, "morningEvents").map((event) => (
-              <TableCell key={event}>{event}</TableCell>
+              <ScTableCell key={event[0].id}>
+                <Link
+                  to={`${event[0].id}`}
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                >
+                  {renderEvent(event)}
+                </Link>
+              </ScTableCell>
             ))}
           </TableRow>
           <TableRow>
@@ -60,7 +70,17 @@ const OverviewTable = ({ codeMatch }) => {
               </ScTypography>
             </TableCell>
             {getEvents(codeMatch.schedule, "lunch").map((event) => (
-              <TableCell key={event}>{event}</TableCell>
+              <ScTableCell key={event[0].id}>
+                {" "}
+                <Link
+                  to={`${event[0].id}`}
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                >
+                  {renderEvent(event)}
+                </Link>
+              </ScTableCell>
             ))}
           </TableRow>
           <TableRow>
@@ -77,7 +97,17 @@ const OverviewTable = ({ codeMatch }) => {
               </ScTypography>
             </TableCell>
             {getEvents(codeMatch.schedule, "afternoonEvents").map((event) => (
-              <TableCell key={event}>{event}</TableCell>
+              <ScTableCell key={event[0].id}>
+                {" "}
+                <Link
+                  to={`${event[0].id}`}
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                >
+                  {renderEvent(event)}
+                </Link>
+              </ScTableCell>
             ))}
           </TableRow>
           <TableRow>
@@ -90,7 +120,17 @@ const OverviewTable = ({ codeMatch }) => {
               </ScTypography>
             </TableCell>
             {getEvents(codeMatch.schedule, "dinner").map((event) => (
-              <TableCell key={event}>{event}</TableCell>
+              <ScTableCell key={event[0].id}>
+                {" "}
+                <Link
+                  to={`${event[0].id}`}
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                >
+                  {renderEvent(event)}
+                </Link>
+              </ScTableCell>
             ))}
           </TableRow>
         </TableBody>

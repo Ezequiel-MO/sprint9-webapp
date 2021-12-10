@@ -61,15 +61,28 @@ const OTLogic = () => {
 
   const getEvents = (schedule, timeOfDay) => {
     const eventsArr = schedule.map((day) =>
-      day[timeOfDay].map((event) => event.name)
+      day[timeOfDay].map((event) => {
+        return {
+          name: event.name,
+          id: event._id,
+        };
+      })
     );
-    // iterate through eventsArr and return the string if there is one element, and return the strings with a / between them if there are more than one
-    const joinedArr = eventsArr.map((day) =>
-      day.length === 1 ? day[0] : day.join(" / ")
-    );
-    return joinedArr;
+    console.log("eventsArr", eventsArr);
+    return eventsArr;
   };
-  return { transformDates, getDays, getEvents };
+
+  const renderEvent = (arr) => {
+    if (arr.length === 0) {
+      return "No events scheduled";
+    } else if (arr.length === 1) {
+      return arr[0].name;
+    } else {
+      return arr.map((event) => event.name).join("/");
+    }
+  };
+
+  return { transformDates, getDays, getEvents, renderEvent };
 };
 
 export default OTLogic;
