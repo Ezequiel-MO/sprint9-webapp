@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { Icon } from "@iconify/react";
 import OTLogic from "./OTLogic";
+import { ScTypography, ScTableRow } from "./styles";
 
 const OverviewTable = ({ codeMatch }) => {
   console.log("codeMatch", codeMatch);
@@ -20,7 +21,7 @@ const OverviewTable = ({ codeMatch }) => {
     <TableContainer component={Paper} elevation={0}>
       <Table size='small'>
         <TableHead>
-          <TableRow>
+          <ScTableRow>
             <TableCell>
               <Typography variant='h6'>
                 {transformDates(codeMatch.arrivalDay, codeMatch.departureDay)}
@@ -33,17 +34,17 @@ const OverviewTable = ({ codeMatch }) => {
                 </TableCell>
               )
             )}
-          </TableRow>
+          </ScTableRow>
         </TableHead>
         <TableBody>
           <TableRow>
             <TableCell>
-              <Typography variant='body1'>
+              <ScTypography variant='body1'>
                 Morning
                 <span>
                   <Icon icon='vaadin:morning' color='#ea5033' width='40' />
                 </span>
-              </Typography>
+              </ScTypography>
             </TableCell>
             {getEvents(codeMatch.schedule, "morningEvents").map((event) => (
               <TableCell key={event}>{event}</TableCell>
@@ -51,12 +52,12 @@ const OverviewTable = ({ codeMatch }) => {
           </TableRow>
           <TableRow>
             <TableCell>
-              <Typography variant='body1'>
+              <ScTypography variant='body1'>
                 Lunch
                 <span>
                   <Icon icon='bx:bx-restaurant' color='#ea5033' width='35' />
                 </span>
-              </Typography>
+              </ScTypography>
             </TableCell>
             {getEvents(codeMatch.schedule, "lunch").map((event) => (
               <TableCell key={event}>{event}</TableCell>
@@ -64,7 +65,7 @@ const OverviewTable = ({ codeMatch }) => {
           </TableRow>
           <TableRow>
             <TableCell>
-              <Typography variant='body1'>
+              <ScTypography variant='body1'>
                 Afternoon
                 <span>
                   <Icon
@@ -73,7 +74,7 @@ const OverviewTable = ({ codeMatch }) => {
                     width='35'
                   />
                 </span>
-              </Typography>
+              </ScTypography>
             </TableCell>
             {getEvents(codeMatch.schedule, "afternoonEvents").map((event) => (
               <TableCell key={event}>{event}</TableCell>
@@ -81,12 +82,12 @@ const OverviewTable = ({ codeMatch }) => {
           </TableRow>
           <TableRow>
             <TableCell>
-              <Typography variant='body1'>
+              <ScTypography variant='body1'>
                 Dinner
                 <span>
                   <Icon icon='cil:dinner' color='#ea5033' width='35' />
                 </span>
-              </Typography>
+              </ScTypography>
             </TableCell>
             {getEvents(codeMatch.schedule, "dinner").map((event) => (
               <TableCell key={event}>{event}</TableCell>
