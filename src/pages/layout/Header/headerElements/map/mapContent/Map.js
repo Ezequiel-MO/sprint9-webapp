@@ -1,6 +1,7 @@
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { Icon } from "@iconify/react";
 import MapLogic from "./MapLogic";
+import InfoMarker from "./InfoMarker";
 
 const Map = ({ codeMatch }) => {
   const {
@@ -30,19 +31,17 @@ const Map = ({ codeMatch }) => {
               <Icon icon={coord.icon} color='#ea5933' width='40' />
             </p>
           </Marker>
+
           {selectedLocation.name === coord.name && (
             <Popup
               latitude={coord.latitude}
               longitude={coord.longitude}
               closeButton={true}
               onClose={() => setSelectedLocation({})}
-              anchor='top'
+              anchor='bottom'
+              offsetTop={15}
             >
-              <div>
-                <h2>{selectedLocation.name}</h2>
-                <p>{selectedLocation.latitude}</p>
-                <p>{selectedLocation.longitude}</p>
-              </div>
+              <InfoMarker selectedLocation={selectedLocation} />
             </Popup>
           )}
         </div>

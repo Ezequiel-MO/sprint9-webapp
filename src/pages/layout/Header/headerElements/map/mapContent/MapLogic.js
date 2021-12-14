@@ -33,6 +33,7 @@ const MapLogic = (codeMatch) => {
             latitude: getLat(hotel.coordinates[0]),
             longitude: getLng(hotel.coordinates[0]),
             name: hotel.name,
+            id: hotel._id,
             icon: "bx:bx-hotel",
           },
         ]);
@@ -50,6 +51,7 @@ const MapLogic = (codeMatch) => {
               latitude: getLat(event.coordinates[0]),
               longitude: getLng(event.coordinates[0]),
               name: event.name,
+              id: event._id,
               icon: "carbon:events",
             },
           ]);
@@ -65,6 +67,7 @@ const MapLogic = (codeMatch) => {
               latitude: getLat(event.coordinates[0]),
               longitude: getLng(event.coordinates[0]),
               name: event.name,
+              id: event._id,
               icon: "bx:bx-restaurant",
             },
           ]);
@@ -80,6 +83,7 @@ const MapLogic = (codeMatch) => {
               latitude: getLat(event.coordinates[0]),
               longitude: getLng(event.coordinates[0]),
               name: event.name,
+              id: event._id,
               icon: "carbon:events",
             },
           ]);
@@ -95,6 +99,7 @@ const MapLogic = (codeMatch) => {
               latitude: getLat(event.coordinates[0]),
               longitude: getLng(event.coordinates[0]),
               name: event.name,
+              id: event._id,
               icon: "bx:bx-restaurant",
             },
           ]);
