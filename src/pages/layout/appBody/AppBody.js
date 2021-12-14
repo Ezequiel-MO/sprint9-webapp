@@ -1,5 +1,5 @@
 import Day from "../../../vendorComponents/schedule/Day";
-import { ScAppBodyRoot } from "../styles";
+import { pageStyle, ScAppBodyRoot } from "../styles";
 import VendorOptionsTab from "../../../vendorComponents/utilComponents/tabs/VendorOptionsTab";
 import Hotel from "../../../vendorComponents/hotel/Hotel";
 import Budget from "./budget/Budget";
@@ -15,6 +15,8 @@ const AppBody = ({ codeMatch }) => {
   const budgetRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => budgetRef.current,
+    //insert styles
+    pageStyle: () => pageStyle,
   });
 
   return (

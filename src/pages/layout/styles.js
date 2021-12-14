@@ -17,3 +17,34 @@ export const ScLayoutRoot = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+export const pageStyle = `
+  @media all {
+    .page-break {
+      display: none;
+    }
+  }
+  
+  @media print {
+    html, body {
+      height: initial !important;
+      overflow: auto !important;
+      -webkit-print-color-adjust: exact;
+    }
+  }
+  
+  @media print {
+    .page-break {
+      margin-top: 2rem;
+      padding: 1rem;
+      display: block;
+      page-break-before: auto;
+    }
+  }
+  
+  @page {
+    size: landscape;
+    margin: 20mm;
+
+  }
+`;
