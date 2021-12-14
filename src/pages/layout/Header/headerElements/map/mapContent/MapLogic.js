@@ -9,7 +9,6 @@ const MapLogic = (codeMatch) => {
 
   const getLat = (string) => {
     let stringArr = string?.split(",");
-    //if string contains floating point numbers, extract the first one and return it
     if (stringArr[0].match(/[0-9]*\.[0-9]*/)) {
       return parseFloat(stringArr[0].match(/[0-9]*\.[0-9]*/)[0]);
     }
@@ -34,6 +33,7 @@ const MapLogic = (codeMatch) => {
             latitude: getLat(hotel.coordinates[0]),
             longitude: getLng(hotel.coordinates[0]),
             name: hotel.name,
+            icon: "bx:bx-hotel",
           },
         ]);
       }
@@ -50,6 +50,7 @@ const MapLogic = (codeMatch) => {
               latitude: getLat(event.coordinates[0]),
               longitude: getLng(event.coordinates[0]),
               name: event.name,
+              icon: "carbon:events",
             },
           ]);
         }
@@ -64,6 +65,7 @@ const MapLogic = (codeMatch) => {
               latitude: getLat(event.coordinates[0]),
               longitude: getLng(event.coordinates[0]),
               name: event.name,
+              icon: "bx:bx-restaurant",
             },
           ]);
         }
@@ -78,6 +80,7 @@ const MapLogic = (codeMatch) => {
               latitude: getLat(event.coordinates[0]),
               longitude: getLng(event.coordinates[0]),
               name: event.name,
+              icon: "carbon:events",
             },
           ]);
         }
@@ -92,6 +95,7 @@ const MapLogic = (codeMatch) => {
               latitude: getLat(event.coordinates[0]),
               longitude: getLng(event.coordinates[0]),
               name: event.name,
+              icon: "bx:bx-restaurant",
             },
           ]);
         }

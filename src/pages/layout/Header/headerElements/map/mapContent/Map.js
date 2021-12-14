@@ -27,7 +27,7 @@ const Map = ({ codeMatch }) => {
             offsetTop={-10}
           >
             <p onClick={() => setSelectedLocation(coord)}>
-              <Icon icon='bx:bx-hotel' color='#ea5933' width='40' />
+              <Icon icon={coord.icon} color='#ea5933' width='40' />
             </p>
           </Marker>
           {selectedLocation.name === coord.name && (
