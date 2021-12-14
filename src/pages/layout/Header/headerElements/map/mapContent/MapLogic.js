@@ -6,10 +6,6 @@ const MapLogic = (codeMatch) => {
   const [coords, setCoords] = useState([]);
   const { hotels, schedule } = codeMatch;
 
-  useEffect(() => {
-    console.log("coords heyss", coords);
-  }, [coords]);
-
   const getLat = (string) => {
     let stringArr = string?.split(",");
     //if string contains floating point numbers, extract the first one and return it
@@ -102,27 +98,22 @@ const MapLogic = (codeMatch) => {
     });
   }, [schedule]);
 
-  const coords1 = [
-    { latitude: 41.368679, longitude: 2.189983, name: "Hotel W" },
-    { latitude: 41.394591, longitude: 2.157261, name: "Hotel X" },
-    { latitude: 41.389121, longitude: 2.162645, name: "Hotel Z" },
-  ];
-  const center = getCenter(coords1);
-  console.log("center", center);
+  const center = getCenter(coords);
+
   const [viewport, setViewport] = useState({
     width: "100%",
     height: "100%",
-    latitude: center.latitude,
-    longitude: center.longitude,
+    latitude: /* center.latitude */ 41.368679,
+    longitude: /* center.longitude */ 2.189983,
     zoom: 12,
   });
 
   return {
     selectedLocation,
     setSelectedLocation,
+    coords,
     viewport,
     setViewport,
-    coords,
   };
 };
 

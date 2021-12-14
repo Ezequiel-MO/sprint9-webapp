@@ -10,10 +10,11 @@ const Map = ({ codeMatch }) => {
     viewport,
     setViewport,
   } = MapLogic(codeMatch);
+
   return (
     <ReactMapGL
       mapStyle='mapbox://styles/oliverm316/ckx0n8rqw24sr15o5vei79sto'
-      mapboxApiAccessToken='pk.eyJ1Ijoib2xpdmVybTMxNiIsImEiOiJja3gwbzQ5dWMwdGY5MnFvYmJoZWFqYmg5In0.DHlbmXqmGZjEirgSs29hUA'
+      mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
       {...viewport}
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
     >
