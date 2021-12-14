@@ -1,6 +1,4 @@
 import { Typography, Modal } from "@mui/material";
-
-/* import OverviewTable from "./overviewTable/OverviewTable"; */
 import { CentralModalContainer } from "./map/mapContent/styles";
 import Map from "./map/mapContent/Map";
 import OverviewTable from "./overview/overviewTable/OverviewTable";

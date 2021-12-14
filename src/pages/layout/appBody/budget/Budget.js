@@ -9,11 +9,11 @@ import {
 import DayRow from "./renderTable/rows/DayRow";
 import HotelBreakdownRows from "./renderTable/rows/hotelBreakdownRows/HotelBreakdownRows";
 import HotelRows from "./renderTable/rows/HotelRows";
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 import TotalBudgetCost from "./totalBudgetCost/TotalBudgetCost";
 import BudgetPerCategory from "./totalBudgetCost/budgetPerCategory/BudgetPerCategory";
 
-const Budget = ({ pax, schedule, hotels }) => {
+const Budget = forwardRef(({ pax, schedule, hotels }, ref) => {
   const [open, setOpen] = useState(true);
   const [hotelPricesObj, setHotelPricesObj] = useState({});
   const handleClick = () => {
@@ -21,7 +21,7 @@ const Budget = ({ pax, schedule, hotels }) => {
   };
 
   return (
-    <Paper>
+    <Paper ref={ref}>
       <Table stickyHeader size='small'>
         <TableHead>
           <TableRow>
@@ -61,6 +61,6 @@ const Budget = ({ pax, schedule, hotels }) => {
       <BudgetPerCategory pax={pax} selectedHotel={hotelPricesObj} />
     </Paper>
   );
-};
+});
 
 export default Budget;

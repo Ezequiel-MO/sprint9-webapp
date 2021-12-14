@@ -6,9 +6,17 @@ import Budget from "./budget/Budget";
 import { useSelector } from "react-redux";
 import { selectDarkMode } from "../../../features/DarkModeSlice";
 import Footer from "./footer/Footer";
+import { useRef } from "react";
+import { useReactToPrint } from "react-to-print";
 
 const AppBody = ({ codeMatch }) => {
   const darkMode = useSelector(selectDarkMode);
+
+  const budgetRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => budgetRef.current,
+  });
+
   return (
     <ScAppBodyRoot elevation={2} darkMode={darkMode}>
       <div>
@@ -27,11 +35,15 @@ const AppBody = ({ codeMatch }) => {
       </div>
       <div>
         {codeMatch && (
-          <Budget
-            pax={codeMatch?.nrPax}
-            schedule={codeMatch?.schedule}
-            hotels={codeMatch?.hotels}
-          />
+          <>
+            <button onClick={handlePrint}>Print this out!</button>
+            <Budget
+              ref={budgetRef}
+              pax={codeMatch?.nrPax}
+              schedule={codeMatch?.schedule}
+              hotels={codeMatch?.hotels}
+            />
+          </>
         )}
       </div>
       <Footer />
