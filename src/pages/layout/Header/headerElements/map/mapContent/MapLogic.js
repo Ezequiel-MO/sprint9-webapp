@@ -4,6 +4,7 @@ import getCenter from "geolib/es/getCenter";
 const MapLogic = (codeMatch) => {
   const [selectedLocation, setSelectedLocation] = useState({});
   const [coords, setCoords] = useState([]);
+  const [viewport, setViewport] = useState({});
   const { hotels, schedule } = codeMatch;
 
   const getLat = (string) => {
@@ -98,15 +99,18 @@ const MapLogic = (codeMatch) => {
     });
   }, [schedule]);
 
-  const center = getCenter(coords);
-
-  const [viewport, setViewport] = useState({
-    width: "100%",
-    height: "100%",
-    latitude: /* center.latitude */ 41.368679,
-    longitude: /* center.longitude */ 2.189983,
-    zoom: 12,
-  });
+  useEffect(() => {
+    if (coords.length > 0) {
+      const centerObj = getCenter(coords);
+      setViewport({
+        width: "100%",
+        height: "100%",
+        latitude: centerObj.latitude,
+        longitude: centerObj.longitude,
+        zoom: 12,
+      });
+    }
+  }, [coords]);
 
   return {
     selectedLocation,
