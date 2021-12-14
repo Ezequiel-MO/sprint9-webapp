@@ -47,10 +47,10 @@ const OverviewTable = ({ codeMatch }) => {
                 </span>
               </ScTypography>
             </TableCell>
-            {getEvents(codeMatch.schedule, "morningEvents").map((event) => (
-              <ScTableCell key={event[0].id}>
+            {getEvents(codeMatch.schedule, "morningEvents")?.map((event) => (
+              <ScTableCell key={event[0]?.id}>
                 <Link
-                  to={`${event[0].id}`}
+                  to={`${event[0]?.id}`}
                   spy={true}
                   smooth={true}
                   duration={500}
@@ -69,11 +69,11 @@ const OverviewTable = ({ codeMatch }) => {
                 </span>
               </ScTypography>
             </TableCell>
-            {getEvents(codeMatch.schedule, "lunch").map((event) => (
-              <ScTableCell key={event[0].id}>
+            {getEvents(codeMatch.schedule, "lunch")?.map((event) => (
+              <ScTableCell key={event[0]?.id}>
                 {" "}
                 <Link
-                  to={`${event[0].id}`}
+                  to={`${event[0]?.id}`}
                   spy={true}
                   smooth={true}
                   duration={500}
@@ -96,11 +96,11 @@ const OverviewTable = ({ codeMatch }) => {
                 </span>
               </ScTypography>
             </TableCell>
-            {getEvents(codeMatch.schedule, "afternoonEvents").map((event) => (
-              <ScTableCell key={event[0].id}>
+            {getEvents(codeMatch.schedule, "afternoonEvents")?.map((event) => (
+              <ScTableCell key={event[0]?.id}>
                 {" "}
                 <Link
-                  to={`${event[0].id}`}
+                  to={`${event[0]?.id}`}
                   spy={true}
                   smooth={true}
                   duration={500}
@@ -119,11 +119,11 @@ const OverviewTable = ({ codeMatch }) => {
                 </span>
               </ScTypography>
             </TableCell>
-            {getEvents(codeMatch.schedule, "dinner").map((event) => (
-              <ScTableCell key={event[0].id}>
+            {getEvents(codeMatch.schedule, "dinner")?.map((event) => (
+              <ScTableCell key={event[0]?.id}>
                 {" "}
                 <Link
-                  to={`${event[0].id}`}
+                  to={`${event[0]?.id}`}
                   spy={true}
                   smooth={true}
                   duration={500}

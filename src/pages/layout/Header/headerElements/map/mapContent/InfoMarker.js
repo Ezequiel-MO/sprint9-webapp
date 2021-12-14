@@ -4,11 +4,10 @@ import { Link } from "react-scroll";
 
 export default function InfoMarker({ selectedLocation }) {
   return (
-    <InfoMarkerContainer>
-      <Link to={selectedLocation.id} smooth={true} duration={500}>
+    <Link to={selectedLocation.id} smooth={true} duration={500} spy={true}>
+      <InfoMarkerContainer>
         <Typography variant='h6'>{selectedLocation.name}</Typography>
-        {selectedLocation.id}
-      </Link>
-    </InfoMarkerContainer>
+      </InfoMarkerContainer>
+    </Link>
   );
 }

@@ -16,19 +16,21 @@ import {
   selectDarkMode,
   TOGGLE_DARKMODE,
 } from "../../../features/DarkModeSlice";
-import Overview from "./headerElements/overview/Overview";
 import { useState } from "react";
-import MapModal from "./headerElements/map/MapModal";
+import CentralModal from "./headerElements/CentralModal";
 
 const Header = ({ handleDrawerToggle, codeMatch }) => {
   const darkMode = useSelector(selectDarkMode);
   const dispatch = useDispatch();
   const [overviewOpen, setOverviewOpen] = useState(false);
   const [mapOpen, setMapOpen] = useState(false);
+  const [briefingOpen, setBriefingOpen] = useState(false);
   const handleOverviewOpen = () => setOverviewOpen(true);
   const handleMapOpen = () => setMapOpen(true);
+  const handleBriefingOpen = () => setBriefingOpen(true);
   const handleOverviewClose = () => setOverviewOpen(false);
   const handleMapClose = () => setMapOpen(false);
+  const handleBriefingClose = () => setBriefingOpen(false);
   return (
     <>
       <HideOnScroll>
@@ -76,7 +78,7 @@ const Header = ({ handleDrawerToggle, codeMatch }) => {
                   <Icon icon='mdi:chevron-down' color='#ea5933' width='24' />
                 </span>
               </ScButton>
-              <ScButton>
+              <ScButton onClick={handleBriefingOpen}>
                 <span>
                   <Typography variant='overline'>Group Briefing ...</Typography>
                 </span>
@@ -91,15 +93,23 @@ const Header = ({ handleDrawerToggle, codeMatch }) => {
           </ScToolbar>
         </ScAppBar>
       </HideOnScroll>
-      <Overview
+      <CentralModal
         open={overviewOpen}
         handleClose={handleOverviewClose}
         codeMatch={codeMatch}
+        typeOfModal='Overview'
       />
-      <MapModal
+      <CentralModal
         open={mapOpen}
         handleClose={handleMapClose}
         codeMatch={codeMatch}
+        typeOfModal='Map'
+      />
+      <CentralModal
+        open={briefingOpen}
+        handleClose={handleBriefingClose}
+        codeMatch={codeMatch}
+        typeOfModal='Briefing'
       />
     </>
   );
