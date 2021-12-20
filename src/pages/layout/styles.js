@@ -38,7 +38,7 @@ export const pageStyle = `
       margin-top: 2rem;
       padding: 1rem;
       display: block;
-      page-break-before: auto;
+      page-break-before: always;
     }
   }
   
