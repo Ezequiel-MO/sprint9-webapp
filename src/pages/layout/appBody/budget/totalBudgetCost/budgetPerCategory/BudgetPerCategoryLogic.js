@@ -7,6 +7,7 @@ const BudgetPerCategoryLogic = (selectedHotel, pax) => {
   const schedule = useSelector(selectBudget);
   const [hotelCost, setHotelCost] = useState(0);
   const [costObj, setCostObj] = useState({
+    totalTransfers: 0,
     totalMorningEvents: 0,
     totalAfternoonEvents: 0,
     totalLunch: 0,
@@ -15,12 +16,14 @@ const BudgetPerCategoryLogic = (selectedHotel, pax) => {
 
   useEffect(() => {
     const {
+      totalTransfers,
       totalMorningEvents,
       totalAfternoonEvents,
       totalLunch,
       totalDinner,
     } = totalProgramCost(pax, schedule);
     setCostObj({
+      totalTransfers,
       totalMorningEvents,
       totalAfternoonEvents,
       totalLunch,
@@ -34,6 +37,11 @@ const BudgetPerCategoryLogic = (selectedHotel, pax) => {
   }, [selectedHotel]);
 
   const renderData = [
+    {
+      icon: "bx:bxs-hotel",
+      title: "Transfers",
+      value: costObj.totalTransfers,
+    },
     {
       icon: "bx:bxs-hotel",
       title: "Accommodation",

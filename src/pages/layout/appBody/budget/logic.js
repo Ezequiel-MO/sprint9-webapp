@@ -25,7 +25,7 @@ const computeTotal = (field) => {
     //iterate through the array
     field.forEach((event) => {
       //add the price to the total
-      total += event.price;
+      total += event.price || event.transfer_in_out;
     });
   }
   //else if morningEvents is a single object
@@ -37,15 +37,16 @@ const computeTotal = (field) => {
 };
 
 export const totalProgramCost = (nr, arr) => {
+  let totalTransfers = 0;
   let totalMorningEvents = 0;
   let totalAfternoonEvents = 0;
   let totalLunch = 0;
   let totalDinner = 0;
-  //iterate through arr,
   arr.forEach((item) => {
-    //iterate the item object
     for (let key in item) {
-      if (key === "morningEvents") {
+      if (key === "transfer_in_out") {
+        totalTransfers += computeTotal(item[key]);
+      } else if (key === "morningEvents") {
         totalMorningEvents += computeTotal(item[key]);
       } else if (key === "afternoonEvents") {
         totalAfternoonEvents += computeTotal(item[key]);
@@ -57,8 +58,11 @@ export const totalProgramCost = (nr, arr) => {
     }
   });
   const totalScheduleCost =
-    nr * (totalMorningEvents + totalAfternoonEvents + totalLunch + totalDinner);
+    nr *
+      (totalMorningEvents + totalAfternoonEvents + totalLunch + totalDinner) +
+    totalTransfers;
   return {
+    totalTransfers,
     totalScheduleCost,
     totalMorningEvents,
     totalAfternoonEvents,
