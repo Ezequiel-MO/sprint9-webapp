@@ -1,8 +1,18 @@
 import Rows from "./Rows";
 
 const DayRow = ({ day, pax }) => {
+  const transferServices = 1;
   return (
     <>
+      {day.transfer_in_out.length > 0 ? (
+        <Rows
+          pax={transferServices}
+          date={day.date}
+          options={day.transfer_in_out}
+          description='Transfer Airport/ Hotel'
+          id='transfer_in_out'
+        />
+      ) : null}
       {day.morningEvents.length > 0 ? (
         <Rows
           pax={pax}

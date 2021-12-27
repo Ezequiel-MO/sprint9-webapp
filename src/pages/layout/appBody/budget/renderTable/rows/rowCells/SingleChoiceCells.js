@@ -1,15 +1,19 @@
 import { TableCell } from "@mui/material";
 import { accounting } from "accounting";
 
-const SingleChoiceCells = ({ pax, options, cat }) => {
+const SingleChoiceCells = ({ pax, options, cat, description }) => {
   return (
     <>
-      <TableCell>{cat}</TableCell>
-      <TableCell>{options[0].name}</TableCell>
-      <TableCell>{pax}</TableCell>
-      <TableCell>{accounting.formatMoney(options[0].price, "€")}</TableCell>
+      <TableCell>{cat || description}</TableCell>
       <TableCell>
-        {accounting.formatMoney(pax * options[0].price, "€")}
+        {options[0].name || `${options[0].vehicleCapacity} pax Bus`}
+      </TableCell>
+      <TableCell>{pax}</TableCell>
+      <TableCell>
+        {accounting.formatMoney(options[0].transfer_in_out, "€")}
+      </TableCell>
+      <TableCell>
+        {accounting.formatMoney(pax * options[0].transfer_in_out, "€")}
       </TableCell>
     </>
   );
