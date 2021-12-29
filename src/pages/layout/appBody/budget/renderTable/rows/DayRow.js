@@ -2,9 +2,10 @@ import Rows from "./Rows";
 
 const DayRow = ({ day, pax }) => {
   const transferServices = 1;
+
   return (
     <>
-      {day.transfer_in_out.length > 0 ? (
+      {day.transfer_in_out?.length > 0 ? (
         <Rows
           pax={transferServices}
           date={day.date}
@@ -13,7 +14,7 @@ const DayRow = ({ day, pax }) => {
           id='transfer_in_out'
         />
       ) : null}
-      {day.morningEvents.length > 0 ? (
+      {day.morningEvents?.length > 0 ? (
         <Rows
           pax={pax}
           date={day.date}
@@ -22,7 +23,7 @@ const DayRow = ({ day, pax }) => {
           id='morningEvents'
         />
       ) : null}
-      {day.lunch.length > 0 ? (
+      {day.lunch?.length > 0 ? (
         <Rows
           pax={pax}
           date={day.date}
@@ -31,7 +32,7 @@ const DayRow = ({ day, pax }) => {
           id='lunch'
         />
       ) : null}
-      {day.afternoonEvents.length > 0 ? (
+      {day.afternoonEvents?.length > 0 ? (
         <Rows
           pax={pax}
           date={day.date}
@@ -40,7 +41,7 @@ const DayRow = ({ day, pax }) => {
           id='afternoonEvents'
         />
       ) : null}
-      {day.dinner.length > 0 ? (
+      {day.dinner?.length > 0 ? (
         <Rows
           pax={pax}
           date={day.date}

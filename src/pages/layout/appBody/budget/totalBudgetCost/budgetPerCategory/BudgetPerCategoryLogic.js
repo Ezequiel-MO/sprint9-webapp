@@ -6,7 +6,16 @@ import { getHotelTotal, totalProgramCost } from "../../logic";
 const BudgetPerCategoryLogic = (selectedHotel, pax) => {
   const schedule = useSelector(selectBudget);
   const [hotelCost, setHotelCost] = useState(0);
-  const [costObj, setCostObj] = useState({
+  const [
+    {
+      totalTransfers,
+      totalMorningEvents,
+      totalAfternoonEvents,
+      totalLunch,
+      totalDinner,
+    },
+    setCostObj,
+  ] = useState({
     totalTransfers: 0,
     totalMorningEvents: 0,
     totalAfternoonEvents: 0,
@@ -40,7 +49,7 @@ const BudgetPerCategoryLogic = (selectedHotel, pax) => {
     {
       icon: "bx:bxs-hotel",
       title: "Transfers",
-      value: costObj.totalTransfers,
+      value: totalTransfers,
     },
     {
       icon: "bx:bxs-hotel",
@@ -50,12 +59,12 @@ const BudgetPerCategoryLogic = (selectedHotel, pax) => {
     {
       icon: "carbon:events",
       title: "Events",
-      value: (costObj.totalMorningEvents + costObj.totalAfternoonEvents) * pax,
+      value: (totalMorningEvents + totalAfternoonEvents) * pax,
     },
     {
       icon: "bx:bx-restaurant",
       title: "Meals",
-      value: (costObj.totalLunch + costObj.totalDinner) * pax,
+      value: (totalLunch + totalDinner) * pax,
     },
   ];
   return { renderData };
