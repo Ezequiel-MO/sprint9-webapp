@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react";
 
-const SidebarMenuLogic = (codeMatch) => {
+const useSidebarMenu = (codeMatch) => {
   const sidebarContent = {
     id: "root",
     name: "Day Program",
@@ -61,4 +61,4 @@ const SidebarMenuLogic = (codeMatch) => {
   return { sidebarContent };
 };
 
-export default SidebarMenuLogic;
+export default useSidebarMenu;

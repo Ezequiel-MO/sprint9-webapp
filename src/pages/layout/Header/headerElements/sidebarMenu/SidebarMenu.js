@@ -3,11 +3,11 @@ import { Link } from "react-scroll";
 import { useDispatch } from "react-redux";
 import { Icon } from "@iconify/react";
 import { SET_TABOPTION } from "../../../../../features/TabOptionSlice";
-import SidebarMenuLogic from "./SidebarMenuLogic";
+import useSidebarMenu from "./useSidebarMenu";
 
 const SidebarMenu = ({ codeMatch }) => {
   const dispatch = useDispatch();
-  const { sidebarContent } = SidebarMenuLogic(codeMatch);
+  const { sidebarContent } = useSidebarMenu(codeMatch);
   const renderTree = (nodes) => {
     return (
       <TreeItem nodeId='root' label={nodes.name}>
