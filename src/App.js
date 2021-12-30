@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Welcome from "./pages/welcome/Welcome";
 import Layout from "./pages/layout/Layout";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -52,12 +52,13 @@ function App() {
   });
   return (
     <ThemeProvider theme={theme}>
-      <Router>
+      <BrowserRouter>
         <Routes>
-          <Route path='/app' element={<Layout />} />
+          <Route path='app' element={<Layout />} />
           <Route path='/' element={<Welcome />} />
+          <Route path='/*' element={<Navigate to='/' replace />} />
         </Routes>
-      </Router>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
