@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Welcome from "./pages/welcome/Welcome";
-import Layout from "./pages/layout/Layout";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useSelector } from "react-redux";
 import { selectDarkMode } from "./features/DarkModeSlice";
+import { routes } from "./routes/routes";
+import { Suspense } from "react";
 
 function App() {
   const darkMode = useSelector(selectDarkMode);
@@ -52,13 +53,17 @@ function App() {
   });
   return (
     <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <Routes>
-          <Route path='app' element={<Layout />} />
-          <Route path='/' element={<Welcome />} />
-          <Route path='/*' element={<Navigate to='/' replace />} />
-        </Routes>
-      </BrowserRouter>
+      <Suspense fallback={<span>Loading ...</span>}>
+        <BrowserRouter>
+          <Routes>
+            {routes.map(({ path, Component }) => (
+              <Route key={path} path={path} element={<Component />} />
+            ))}
+            <Route path='/' element={<Welcome />} />
+            <Route path='/*' element={<Navigate to='/' replace />} />
+          </Routes>
+        </BrowserRouter>
+      </Suspense>
     </ThemeProvider>
   );
 }
