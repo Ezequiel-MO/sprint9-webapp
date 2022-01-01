@@ -22,15 +22,9 @@ import CentralModal from "./headerElements/CentralModal";
 const Header = ({ handleDrawerToggle, codeMatch }) => {
   const darkMode = useSelector(selectDarkMode);
   const dispatch = useDispatch();
-  const [overviewOpen, setOverviewOpen] = useState(false);
-  const [mapOpen, setMapOpen] = useState(false);
-  const [briefingOpen, setBriefingOpen] = useState(false);
-  const handleOverviewOpen = () => setOverviewOpen(true);
-  const handleMapOpen = () => setMapOpen(true);
-  const handleBriefingOpen = () => setBriefingOpen(true);
-  const handleOverviewClose = () => setOverviewOpen(false);
-  const handleMapClose = () => setMapOpen(false);
-  const handleBriefingClose = () => setBriefingOpen(false);
+  const [modal, setModal] = useState("closed");
+  const handleOpen = (modal) => setModal(modal);
+  const handleClose = () => setModal("closed");
   return (
     <>
       <HideOnScroll>
@@ -52,7 +46,7 @@ const Header = ({ handleDrawerToggle, codeMatch }) => {
                   width='45'
                 />
               </IconButton>
-              <ScButton onClick={handleMapOpen}>
+              <ScButton onClick={() => handleOpen("map")}>
                 <span>
                   <Typography variant='overline'>Map ...</Typography>
                 </span>
@@ -65,7 +59,7 @@ const Header = ({ handleDrawerToggle, codeMatch }) => {
                   <Icon icon='mdi:chevron-down' color='#ea5933' width='24' />
                 </span>
               </ScButton>
-              <ScButton onClick={handleOverviewOpen}>
+              <ScButton onClick={() => handleOpen("overview")}>
                 <span>
                   <Typography variant='overline'>Overview ...</Typography>
                 </span>
@@ -78,7 +72,7 @@ const Header = ({ handleDrawerToggle, codeMatch }) => {
                   <Icon icon='mdi:chevron-down' color='#ea5933' width='24' />
                 </span>
               </ScButton>
-              <ScButton onClick={handleBriefingOpen}>
+              <ScButton onClick={() => handleOpen("briefing")}>
                 <span>
                   <Typography variant='overline'>Group Briefing ...</Typography>
                 </span>
@@ -94,20 +88,20 @@ const Header = ({ handleDrawerToggle, codeMatch }) => {
         </ScAppBar>
       </HideOnScroll>
       <CentralModal
-        open={overviewOpen}
-        handleClose={handleOverviewClose}
+        open={modal === "overview"}
+        handleClose={handleClose}
         codeMatch={codeMatch}
         typeOfModal='Overview'
       />
       <CentralModal
-        open={mapOpen}
-        handleClose={handleMapClose}
+        open={modal === "map"}
+        handleClose={handleClose}
         codeMatch={codeMatch}
         typeOfModal='Map'
       />
       <CentralModal
-        open={briefingOpen}
-        handleClose={handleBriefingClose}
+        open={modal === "briefing"}
+        handleClose={handleClose}
         codeMatch={codeMatch}
         typeOfModal='Briefing'
       />
