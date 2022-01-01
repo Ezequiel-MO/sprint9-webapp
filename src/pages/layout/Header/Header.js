@@ -23,7 +23,7 @@ const Header = ({ handleDrawerToggle, codeMatch }) => {
   const darkMode = useSelector(selectDarkMode);
   const dispatch = useDispatch();
   const [modal, setModal] = useState("closed");
-  const handleOpen = (modal) => setModal(modal);
+  const handleOpen = (string) => setModal(string);
   const handleClose = () => setModal("closed");
   return (
     <>
