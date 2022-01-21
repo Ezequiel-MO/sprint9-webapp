@@ -1,7 +1,6 @@
 import { TableCell, TableRow } from "@mui/material";
 import SingleChoiceCells from "./rowCells/SingleChoiceCells";
 import MultipleChoiceCells from "./rowCells/MultipleChoiceCells";
-import { useState } from "react";
 
 const Rows = ({ pax, date, options, cat, id, description }) => {
   return (

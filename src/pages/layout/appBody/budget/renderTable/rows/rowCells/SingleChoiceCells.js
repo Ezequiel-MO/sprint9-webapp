@@ -9,11 +9,9 @@ const SingleChoiceCells = ({ pax, options, cat, description }) => {
         {options[0].name || `${options[0].vehicleCapacity} pax Bus`}
       </TableCell>
       <TableCell>{pax}</TableCell>
+      <TableCell>{accounting.formatMoney(options[0].price, "€")}</TableCell>
       <TableCell>
-        {accounting.formatMoney(options[0].transfer_in_out, "€")}
-      </TableCell>
-      <TableCell>
-        {accounting.formatMoney(pax * options[0].transfer_in_out, "€")}
+        {accounting.formatMoney(pax * options[0].price, "€")}
       </TableCell>
     </>
   );
