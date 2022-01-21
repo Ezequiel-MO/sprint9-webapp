@@ -5,13 +5,13 @@ const DayRow = ({ day, pax }) => {
 
   return (
     <>
-      {day.transfer_in_out?.length > 0 ? (
+      {day.transfer_in?.length > 0 ? (
         <Rows
-          pax={transferServices}
-          date={day.date}
-          options={day.transfer_in_out}
+          pax={day.transfer_in.length}
+          date='Arrival Day'
+          options={day.transfer_in}
           description='Transfer Airport/ Hotel'
-          id='transfer_in_out'
+          id='transfer_in'
         />
       ) : null}
       {day.morningEvents?.length > 0 ? (
@@ -48,6 +48,15 @@ const DayRow = ({ day, pax }) => {
           options={day.dinner}
           cat='Dinner'
           id='dinner'
+        />
+      ) : null}
+      {day.transfer_out?.length > 0 ? (
+        <Rows
+          pax={day.transfer_out.length}
+          date='Departure Day'
+          options={day.transfer_out}
+          description='Transfer Out to Airport'
+          id='transfer_out'
         />
       ) : null}
     </>
