@@ -4,11 +4,17 @@ import MultipleChoiceCells from "./rowCells/MultipleChoiceCells";
 import TransferCells from "./rowCells/TransferCells";
 
 const Rows = ({ pax, date, options, cat, id, description }) => {
-  if (id === "transfer_in" || id === "transfer_out") {
+  if (id === "transfer_in" || id === "transfer_out" || id === "transfers") {
     return (
       <TableRow>
         <TableCell>{date}</TableCell>
-        <TransferCells description={description} options={options} pax={pax} />;
+        <TransferCells
+          description={description}
+          options={options}
+          pax={pax}
+          id={id}
+        />
+        ;
       </TableRow>
     );
   }

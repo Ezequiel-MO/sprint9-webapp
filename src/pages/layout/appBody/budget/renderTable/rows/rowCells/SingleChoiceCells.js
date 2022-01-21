@@ -5,9 +5,7 @@ const SingleChoiceCells = ({ pax, options, cat, description }) => {
   return (
     <>
       <TableCell>{cat || description}</TableCell>
-      <TableCell>
-        {options[0].name || `${options[0].vehicleCapacity} pax Bus`}
-      </TableCell>
+      <TableCell>{options[0].name}</TableCell>
       <TableCell>{pax}</TableCell>
       <TableCell>{accounting.formatMoney(options[0].price, "€")}</TableCell>
       <TableCell>

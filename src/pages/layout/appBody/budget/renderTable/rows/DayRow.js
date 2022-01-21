@@ -1,8 +1,6 @@
 import Rows from "./Rows";
 
 const DayRow = ({ day, pax }) => {
-  const transferServices = 1;
-
   return (
     <>
       {day.transfer_in?.length > 0 ? (
@@ -14,6 +12,16 @@ const DayRow = ({ day, pax }) => {
           id='transfer_in'
         />
       ) : null}
+      {day.morningEvents?.length > 0 &&
+      day.morningEvents[0].transfer.length > 0 ? (
+        <Rows
+          pax={day.morningEvents[0].transfer.length}
+          date={day.date}
+          options={day.morningEvents[0].transfer}
+          description='Morning Transfer Service'
+          id='transfers'
+        />
+      ) : null}
       {day.morningEvents?.length > 0 ? (
         <Rows
           pax={pax}
@@ -23,13 +31,25 @@ const DayRow = ({ day, pax }) => {
           id='morningEvents'
         />
       ) : null}
+
       {day.lunch?.length > 0 ? (
         <Rows
-          pax={pax}
+          pax={day.lunch[0].transfer?.length}
           date={day.date}
           options={day.lunch}
           cat='Lunch'
           id='lunch'
+        />
+      ) : null}
+      {day.afternoonEvents?.length > 0 &&
+      day.afternoonEvents[0].transfer?.length > 0 ? (
+        <Rows
+          pax={day.afternoonEvents[0].transfer.length}
+          date={day.date}
+          options={day.afternoonEvents[0].transfer}
+          description='Afternoon Transfer service'
+          cat='Afternoon Events'
+          id='transfers'
         />
       ) : null}
       {day.afternoonEvents?.length > 0 ? (
