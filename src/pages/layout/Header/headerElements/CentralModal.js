@@ -1,8 +1,8 @@
 import { Typography, Modal } from "@mui/material";
-import { CentralModalContainer } from "./map/mapContent/styles";
-import Map from "./map/mapContent/Map";
 import OverviewTable from "./overview/overviewTable/OverviewTable";
 import Briefing from "./groupBriefing/Briefing";
+import { CentralModalContainer } from "./map/styles.js";
+import { MapsApp } from "./map/MapsApp";
 
 const CentralModal = ({ open, handleClose, codeMatch, typeOfModal }) => {
   return (
@@ -13,8 +13,9 @@ const CentralModal = ({ open, handleClose, codeMatch, typeOfModal }) => {
             {typeOfModal}
           </Typography>
           {typeOfModal === "Map" ? (
-            <Map codeMatch={codeMatch} />
-          ) : typeOfModal === "Overview" ? (
+            <MapsApp />
+          ) : /* <Map codeMatch={codeMatch} /> */
+          typeOfModal === "Overview" ? (
             <OverviewTable codeMatch={codeMatch} />
           ) : typeOfModal === "Briefing" ? (
             <Briefing codeMatch={codeMatch} />

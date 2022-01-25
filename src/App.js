@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { selectDarkMode } from "./features/DarkModeSlice";
 import { routes } from "./routes/routes";
 import { Suspense } from "react";
+import { Loading } from "./pages/layout/Header/headerElements/map/components";
 
 function App() {
   const darkMode = useSelector(selectDarkMode);
@@ -53,7 +54,13 @@ function App() {
   });
   return (
     <ThemeProvider theme={theme}>
-      <Suspense fallback={<span>Loading ...</span>}>
+      <Suspense
+        fallback={
+          <span>
+            <Loading />
+          </span>
+        }
+      >
         <BrowserRouter>
           <Routes>
             {routes.map(({ path, Component }) => (
