@@ -1,17 +1,20 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import "./styles.css";
 import { Icon } from "@iconify/react";
+import { PlacesContext } from "../context";
+import { SearchResults } from "./SearchResults";
 
 export const SearchBar = () => {
   const debounceRef = useRef();
+  const { searchPlacesByTerm } = useContext(PlacesContext);
 
   const onQueryChange = (e) => {
     if (debounceRef.current) {
       clearTimeout(debounceRef.current);
     }
     debounceRef.current = setTimeout(() => {
-      console.log("debounced value", e.target.value);
-    }, 1000);
+      searchPlacesByTerm(e.target.value);
+    }, 500);
   };
   return (
     <div className='search-container'>
@@ -24,6 +27,7 @@ export const SearchBar = () => {
       <div className='search-icon'>
         <Icon icon='cil:magnifying-glass' />
       </div>
+      <SearchResults />
     </div>
   );
 };

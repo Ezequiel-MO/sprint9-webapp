@@ -6,9 +6,9 @@ import { HomeScreen } from "./screens";
   throw new Error("Geolocation is not supported by your browser");
 } */
 
-export const MapsApp = () => {
+export const MapsApp = ({ codeMatch }) => {
   return (
-    <PlacesProvider>
+    <PlacesProvider codeMatch={codeMatch}>
       <MapProvider>
         <HomeScreen />
       </MapProvider>

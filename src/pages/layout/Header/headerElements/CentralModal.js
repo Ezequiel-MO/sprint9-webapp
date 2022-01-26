@@ -13,7 +13,7 @@ const CentralModal = ({ open, handleClose, codeMatch, typeOfModal }) => {
             {typeOfModal}
           </Typography>
           {typeOfModal === "Map" ? (
-            <MapsApp />
+            <MapsApp codeMatch={codeMatch} />
           ) : /* <Map codeMatch={codeMatch} /> */
           typeOfModal === "Overview" ? (
             <OverviewTable codeMatch={codeMatch} />
