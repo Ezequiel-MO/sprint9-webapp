@@ -19,6 +19,7 @@ export const MapView = () => {
         center: userLocation, // starting position [lng, lat]
         zoom: 14, // starting zoom
       });
+      map.addControl(new mapboxgl.FullscreenControl());
       setMap(map);
     }
   }, [isLoading]);

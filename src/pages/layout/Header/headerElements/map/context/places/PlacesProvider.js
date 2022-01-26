@@ -15,7 +15,10 @@ export const PlacesProvider = ({ children, codeMatch }) => {
   }, []);
 
   const searchPlacesByTerm = async (query) => {
-    if (query.length === 0) return [];
+    if (query.length === 0) {
+      dispatch({ type: "setPlaces", payload: [] });
+      return [];
+    }
     if (!state.userLocation) throw new Error("No user location");
     dispatch({ type: "setLoadingPlaces" });
     const resp = await mapSearchApi.get(`/${query}.json`, {

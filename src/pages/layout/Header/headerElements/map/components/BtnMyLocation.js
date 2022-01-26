@@ -18,8 +18,8 @@ export const BtnMyLocaion = () => {
       className='btn'
       style={{
         position: "absolute",
-        top: "60px",
-        right: "20px",
+        bottom: "10px",
+        right: "10px",
         zIndex: 999,
         color: "#fff",
         backgroundColor: "#ea5933",

@@ -1,6 +1,7 @@
 export const INITIAL_STATE = {
   isMapReady: false,
   map: undefined,
+  markers: [],
 };
 
 export const mapReducer = (state, action) => {
@@ -10,6 +11,11 @@ export const mapReducer = (state, action) => {
         ...state,
         isMapReady: true,
         map: action.payload,
+      };
+    case "setMarkers":
+      return {
+        ...state,
+        markers: action.payload,
       };
     default:
       return state;
