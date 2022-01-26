@@ -22,6 +22,7 @@ export const MapView = () => {
       map.addControl(new mapboxgl.FullscreenControl());
       setMap(map);
     }
+    // eslint-disable-next-line
   }, [isLoading]);
 
   if (isLoading) {
