@@ -1,9 +1,9 @@
 import { BtnMyLocaion, MapView, SearchBar } from "../components";
 
-export const HomeScreen = () => {
+export const HomeScreen = ({ codeMatch }) => {
   return (
     <div>
-      <MapView />
+      <MapView codeMatch={codeMatch} />
       <BtnMyLocaion />
       <SearchBar />
     </div>

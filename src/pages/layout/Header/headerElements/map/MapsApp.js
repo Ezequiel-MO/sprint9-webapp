@@ -10,7 +10,7 @@ export const MapsApp = ({ codeMatch }) => {
   return (
     <PlacesProvider codeMatch={codeMatch}>
       <MapProvider>
-        <HomeScreen />
+        <HomeScreen codeMatch={codeMatch} />
       </MapProvider>
     </PlacesProvider>
   );
